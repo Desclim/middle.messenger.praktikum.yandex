@@ -1,0 +1,87 @@
+<main class="register">
+    <div class="register__container">
+        <header class="register__header">
+            <h1 class="register__title">Регистрация</h1>
+        </header>
+
+        <form class="register__form" id="register-form">
+            {{> input
+                    id="email"
+                    name="email"
+                    type="text"
+                    label="Почта"
+                    value=""
+                    autocomplete="email"
+            }}
+
+            {{> input
+                    id="username"
+                    name="username"
+                    type="text"
+                    label="Логин"
+                    value=""
+                    autocomplete="username"
+            }}
+
+            {{> input
+                    id="name"
+                    name="name"
+                    type="text"
+                    label="Имя"
+                    value=""
+                    autocomplete="given-name"
+            }}
+
+            {{> input
+                    id="last-name"
+                    name="last-name"
+                    type="text"
+                    label="Фамилия"
+                    value=""
+                    autocomplete="family-name"
+            }}
+
+            {{> input
+                    id="tel"
+                    name="tel"
+                    type="tel"
+                    label="Телефон"
+                    value=""
+                    autocomplete="tel"
+            }}
+
+            {{> input
+                    id="password"
+                    name="password"
+                    type="password"
+                    label="Пароль"
+                    value=""
+                    autocomplete="new-password"
+            }}
+
+            {{> input
+                    id="password-repeat"
+                    name="password-repeat"
+                    type="password"
+                    label="Пароль (ещё раз)"
+                    value=""
+                    autocomplete="new-password"
+            }}
+        </form>
+
+        <aside class="register__footer">
+            {{> button
+                    name="register-submit"
+                    type="submit"
+                    label="Зарегистрироваться"
+                    form="register-form"
+            }}
+            <nav class="register__nav">
+                {{> link
+                        href="/"
+                        label="Войти"
+                }}
+            </nav>
+        </aside>
+    </div>
+</main>
