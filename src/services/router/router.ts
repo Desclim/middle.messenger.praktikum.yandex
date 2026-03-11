@@ -6,6 +6,8 @@ import {NotFoundPage} from "../../pages/notFound/notFound";
 import {ErrorPage} from "../../pages/error/error";
 import {RegisterPage} from "../../pages/register/register";
 import {initRegisterPage} from "../../pages/register/init"
+import {ChatsPage} from "../../pages/chats/chats";
+import {initChatsPage} from "../../pages/chats/init";
 
 const routes:Record<string, Route> = {
     '/': {
@@ -21,6 +23,10 @@ const routes:Record<string, Route> = {
     '/register': {
         render:RegisterPage,
         init:initRegisterPage
+    },
+    '/chats': {
+        render:ChatsPage,
+        init:initChatsPage
     }
 };
 

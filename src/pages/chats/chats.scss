@@ -1,0 +1,53 @@
+@use '../../styles/mixins' as *;
+
+.chats {
+  display: flex;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 calc(100% - 310px);
+    min-height: 100dvh;
+  }
+}
+
+.chats-list {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 310px;
+
+  background: #FBFBFB;
+  height: 100dvh;
+  padding: 21px 10px 0;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+
+    margin-bottom: 14px;
+  }
+}
+
+.sidebar-nav {
+  display: flex;
+  justify-content: end;
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+
+    color: #999999;
+  }
+
+  &__arrow {
+    @include flex-center;
+  }
+}

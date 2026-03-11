@@ -1,0 +1,24 @@
+<main class="chats">
+    <aside class="chats-list">
+        <header class="chats-list__header">
+            <nav class="sidebar-nav">
+                <a href="/profile" class="sidebar-nav__profile">
+                    Профиль
+                    <img
+                            class="sidebar-nav__arrow"
+                            src="./static/icons/arrow-right.svg"
+                            alt=""
+                    />
+                </a>
+            </nav>
+
+            {{> search
+                    name="chats"
+            }}
+        </header>
+    </aside>
+
+    <section class="chats__content">
+        Выберите чат чтобы отправить сообщение
+    </section>
+</main>

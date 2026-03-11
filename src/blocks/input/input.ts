@@ -52,6 +52,8 @@ export class Input {
 
         this.field = this.root.querySelector('.input__field') as HTMLInputElement;
         this.errorElement = this.root.querySelector('.input__error');
+
+        this.bindEvents()
     }
 
     private updateState(): void {
@@ -113,7 +115,6 @@ export class Input {
 
         this.field.addEventListener('input', (event) => {
             const target = event.target as HTMLInputElement;
-            console.log(target.value);
             if (this.mask === 'phone') {
                 const digits = target.value.replace(/\D/g, '');
 

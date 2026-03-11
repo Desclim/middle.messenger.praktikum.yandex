@@ -1,4 +1,5 @@
 import type {LoginPageContext} from "./types";
+import {navigate} from "../../services/router/router";
 
 export function bindLoginFormSubmit(context: LoginPageContext): void {
     context.form.addEventListener('submit', (event) => {
@@ -22,4 +23,5 @@ function handleLoginSubmit(event: Event, context: LoginPageContext): void {
     };
 
     console.log(values);
+    navigate('/chats')
 }

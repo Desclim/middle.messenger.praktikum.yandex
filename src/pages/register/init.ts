@@ -54,14 +54,6 @@ export function initRegisterPage() {
         validator: (value:string)=>validatePasswordRepeat(value, passwordInput.getValue())
     })
 
-    emailInput.bindEvents()
-    usernameInput.bindEvents()
-    nameInput.bindEvents()
-    lastNameInput.bindEvents()
-    telInput.bindEvents()
-    passwordInput.bindEvents()
-    passwordRepeatInput.bindEvents()
-
     const context: RegisterPageContext = {
         registerPage,
         form,

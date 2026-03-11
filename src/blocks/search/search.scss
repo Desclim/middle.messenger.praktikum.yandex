@@ -1,0 +1,70 @@
+@use '../../styles/mixins' as *;
+
+.search {
+  &__control {
+    position: relative;
+    display: block;
+  }
+
+  &__field {
+    border: none;
+    outline: none;
+
+    width: 100%;
+    height: 32px;
+    border-radius: 5px;
+    background: #EFEFEF;
+    padding: 0 12px 0 36px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    color: #1E1E1E;
+
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  &__placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+
+    pointer-events: none;
+    white-space: nowrap;
+    transition: left 0.2s ease, transform 0.2s ease;
+  }
+
+  &__icon {
+    display: block;
+  }
+
+  &__text {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    color: #999999;
+    transition: opacity 0.2s ease;
+  }
+
+  &_focused &__placeholder,
+  &_filled &__placeholder {
+    left: 12px;
+    transform: translateY(-50%);
+  }
+
+  &_focused &__text,
+  &_filled &__text {
+    opacity: 0;
+  }
+}

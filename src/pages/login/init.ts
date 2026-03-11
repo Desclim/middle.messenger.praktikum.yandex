@@ -26,9 +26,6 @@ export function initLoginPage(): void {
         validator: validatePassword,
     });
 
-    loginInput.bindEvents();
-    passwordInput.bindEvents();
-
     const context: LoginPageContext = {
         loginPage,
         form,
