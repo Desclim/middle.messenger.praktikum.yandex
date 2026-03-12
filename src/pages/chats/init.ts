@@ -22,7 +22,7 @@ export function initChatsPage() {
     new PostMessage({
         root: messageRoot,
         onSubmit: (value) => {
-            console.log('Сообщение:', value);
+            console.log(value);
         }
     });
 }

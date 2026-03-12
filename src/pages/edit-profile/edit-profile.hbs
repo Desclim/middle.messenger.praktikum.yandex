@@ -1,10 +1,22 @@
-<main class="register">
-    <div class="register__container">
-        <header class="register__header">
-            <h1 class="register__title">Регистрация</h1>
+<main class="edit-profile">
+    <div class="edit-profile__sidebar">
+        {{> profile-back-button
+                href="/profile"
+
+        }}
+    </div>
+
+    <section class="edit-profile__content">
+
+        <header class="edit-profile__header">
+            {{> profile-avatar
+                    displayName=displayName
+                    showDisplayName=false
+
+            }}
         </header>
 
-        <form class="register__form" id="register-form">
+        <form class="edit-profile__form" id="edit-profile-form">
             {{> input
                     id="email"
                     name="email"
@@ -49,39 +61,16 @@
                     value=""
                     autocomplete="tel"
             }}
-
-            {{> input
-                    id="password"
-                    name="password"
-                    type="password"
-                    label="Пароль"
-                    value=""
-                    autocomplete="new-password"
-            }}
-
-            {{> input
-                    id="password-repeat"
-                    name="password-repeat"
-                    type="password"
-                    label="Пароль (ещё раз)"
-                    value=""
-                    autocomplete="new-password"
-            }}
         </form>
 
-        <aside class="register__footer">
+        <footer class="edit-profile__footer">
             {{> button
-                    name="register-submit"
+                    name="edit-profile-form-submit"
                     type="submit"
-                    label="Зарегистрироваться"
-                    form="register-form"
+                    label="Сохранить"
+                    form="edit-profile-form"
             }}
-            <nav class="register__nav">
-                {{> link
-                        href="/"
-                        label="Войти"
-                }}
-            </nav>
-        </aside>
-    </div>
+        </footer>
+
+    </section>
 </main>

@@ -11,7 +11,6 @@
                         />
                     </a>
                 </nav>
-
                 {{> search
                         name="chats"
                 }}
@@ -22,11 +21,10 @@
                     {{> chat-item}}
                 {{/each}}
             </nav>
-
     </aside>
 
     <section class="chats__content">
-        <p class="chats__placeholder">Выберите чат чтобы отправить сообщение</p>
+        <p class="chats__placeholder">Выберите чат чтобы отправить сообщение</p> <!--Пока что заглушка ленты-->
         <div>
             {{> post-message
                     name="message"

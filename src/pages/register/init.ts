@@ -13,14 +13,14 @@ export function initRegisterPage() {
     const form = registerPage.querySelector('.register__form') as HTMLFormElement | null
 
     const emailRoot = registerPage.querySelector('[data-input="email"]') as HTMLElement | null
-    const usernameRoot = registerPage.querySelector('[data-input="username"]') as HTMLElement | null
-    const nameRoot = registerPage.querySelector('[data-input="name"]') as HTMLElement | null
-    const lastNameRoot = registerPage.querySelector('[data-input="last-name"]') as HTMLElement | null
-    const telRoot = registerPage.querySelector('[data-input="tel"]') as HTMLElement | null
+    const loginRoot = registerPage.querySelector('[data-input="login"]') as HTMLElement | null
+    const firstNameRoot = registerPage.querySelector('[data-input="first_name"]') as HTMLElement | null
+    const secondNameRoot = registerPage.querySelector('[data-input="second_name"]') as HTMLElement | null
+    const phoneRoot = registerPage.querySelector('[data-input="phone"]') as HTMLElement | null
     const passwordRoot = registerPage.querySelector('[data-input="password"]') as HTMLElement | null
     const passwordRepeatRoot = registerPage.querySelector('[data-input="password-repeat"]') as HTMLElement | null
 
-    if (!form || !emailRoot || !usernameRoot || !nameRoot || !lastNameRoot || !telRoot || !passwordRoot || !passwordRepeatRoot) {
+    if (!form || !emailRoot || !loginRoot || !firstNameRoot || !secondNameRoot || !phoneRoot || !passwordRoot || !passwordRepeatRoot) {
         return;
     }
 
@@ -28,20 +28,20 @@ export function initRegisterPage() {
         root: emailRoot,
         validator: validateDefault
     })
-    const usernameInput = new Input({
-        root: usernameRoot,
+    const loginInput = new Input({
+        root: loginRoot,
         validator: validateDefault
     })
-    const nameInput = new Input({
-        root: nameRoot,
+    const firstNameInput = new Input({
+        root: firstNameRoot,
         validator: validateDefault
     })
-    const lastNameInput = new Input({
-        root: lastNameRoot,
+    const secondNameInput = new Input({
+        root: secondNameRoot,
         validator: validateDefault
     })
-    const telInput = new Input({
-        root: telRoot,
+    const phoneInput = new Input({
+        root: phoneRoot,
         validator: validateDefault,
         mask: 'phone'
     })
@@ -57,12 +57,12 @@ export function initRegisterPage() {
     const context: RegisterPageContext = {
         registerPage,
         form,
-        lastNameInput,
+        secondNameInput,
         emailInput,
-        nameInput,
+        firstNameInput,
         passwordRepeatInput,
-        telInput,
-        usernameInput,
+        phoneInput,
+        loginInput,
         passwordInput
     }
 

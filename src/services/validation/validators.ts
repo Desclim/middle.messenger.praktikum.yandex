@@ -1,5 +1,4 @@
 export function validateDefault(value: string): string {
-
     if (!value.trim()) {
         return 'Заполните поле';
     }
@@ -8,7 +7,6 @@ export function validateDefault(value: string): string {
 }
 
 export function validateLogin(value: string): string {
-
     if (!value.trim()) {
         return 'Введите логин';
     }
@@ -17,7 +15,6 @@ export function validateLogin(value: string): string {
 }
 
 export function validatePassword(value: string): string {
-
     if (!value.trim()) {
         return 'Введите пароль';
     }

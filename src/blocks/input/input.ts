@@ -40,6 +40,7 @@ function formatPhone(value: string): string {
 
 export class Input {
     private root: HTMLElement;
+    private value: string;
     private field: HTMLInputElement;
     private mask: MasksInput
     private errorElement: HTMLElement | null;
@@ -49,6 +50,7 @@ export class Input {
         this.root = options.root;
         this.validator = options.validator;
         this.mask = options.mask as MasksInput
+        this.value = options.value as string
 
         this.field = this.root.querySelector('.input__field') as HTMLInputElement;
         this.errorElement = this.root.querySelector('.input__error');
@@ -66,6 +68,10 @@ export class Input {
 
     getValue(): string {
         return this.field.value;
+    }
+
+    setValue(textContent: string): void {
+        this.field.value = textContent;
     }
 
     showError(message: string): void {
@@ -98,6 +104,11 @@ export class Input {
 
     bindEvents(): void {
         this.updateState()
+
+        if (this.value) {
+            this.setValue(this.value)
+            this.updateState();
+        }
 
         this.field.addEventListener('blur', () => {
             this.updateState();

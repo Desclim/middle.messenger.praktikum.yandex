@@ -1,6 +1,6 @@
 @use "../../styles/mixins" as *;
 
-.notFound {
+.not-found {
   @include flex-center;
 
   min-height: 100dvh;

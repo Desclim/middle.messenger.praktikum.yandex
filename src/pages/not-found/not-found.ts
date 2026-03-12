@@ -1,6 +1,6 @@
 import * as Handlebars from 'handlebars'
-import template from "./notFound.hbs?raw";
-import './notFound.scss'
+import template from "./not-found.hbs?raw";
+import './not-found.scss'
 
 const compiled = Handlebars.compile(template)
 export function NotFoundPage() {

@@ -10,10 +10,10 @@ function handleRegisterSubmit(event: Event, context: RegisterPageContext): void 
     event.preventDefault();
 
     const emailValid = context.emailInput.validate();
-    const usernameValid = context.usernameInput.validate();
-    const nameValid = context.nameInput.validate();
-    const lastNameValid = context.lastNameInput.validate();
-    const telValid = context.telInput.validate();
+    const usernameValid = context.loginInput.validate();
+    const nameValid = context.firstNameInput.validate();
+    const lastNameValid = context.secondNameInput.validate();
+    const telValid = context.phoneInput.validate();
     const passwordValid = context.passwordInput.validate();
     const passwordRepeatValid = context.passwordRepeatInput.validate();
 
@@ -23,10 +23,10 @@ function handleRegisterSubmit(event: Event, context: RegisterPageContext): void 
 
     const values = {
         email: context.emailInput.getValue(),
-        username: context.usernameInput.getValue(),
-        name: context.nameInput.getValue(),
-        lastName: context.lastNameInput.getValue(),
-        tel: context.telInput.getValue(),
+        login: context.loginInput.getValue(),
+        firstName: context.firstNameInput.getValue(),
+        secondName: context.secondNameInput.getValue(),
+        phone: context.phoneInput.getValue(),
         password: context.passwordInput.getValue(),
         passwordRepeat: context.passwordRepeatInput.getValue(),
     };
