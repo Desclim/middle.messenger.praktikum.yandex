@@ -68,10 +68,6 @@ export class Input {
         return this.field.value;
     }
 
-    setValue(text:string): void {
-        this.field.value = text;
-    }
-
     showError(message: string): void {
         if (this.errorElement) {
             this.errorElement.textContent = message;

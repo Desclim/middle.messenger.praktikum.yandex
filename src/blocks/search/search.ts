@@ -1,5 +1,4 @@
 import type {SearchOptions} from "./types";
-import './search.scss'
 
 export class Search {
     private root: HTMLElement;

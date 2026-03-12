@@ -1,24 +1,36 @@
 <main class="chats">
-    <aside class="chats-list">
-        <header class="chats-list__header">
-            <nav class="sidebar-nav">
-                <a href="/profile" class="sidebar-nav__profile">
-                    Профиль
-                    <img
-                            class="sidebar-nav__arrow"
-                            src="./static/icons/arrow-right.svg"
-                            alt=""
-                    />
-                </a>
+    <aside class="chats__sidebar">
+            <header class="chats__sidebar-header">
+                <nav class="sidebar-nav">
+                    <a href="/profile" class="sidebar-nav__profile">
+                        Профиль
+                        <img
+                                class="sidebar-nav__arrow"
+                                src="./static/icons/arrow-right.svg"
+                                alt=""
+                        />
+                    </a>
+                </nav>
+
+                {{> search
+                        name="chats"
+                }}
+            </header>
+
+            <nav class="chat-list">
+                {{#each chats}}
+                    {{> chat-item}}
+                {{/each}}
             </nav>
 
-            {{> search
-                    name="chats"
-            }}
-        </header>
     </aside>
 
     <section class="chats__content">
-        Выберите чат чтобы отправить сообщение
+        <p class="chats__placeholder">Выберите чат чтобы отправить сообщение</p>
+        <div>
+            {{> post-message
+                    name="message"
+            }}
+        </div>
     </section>
 </main>

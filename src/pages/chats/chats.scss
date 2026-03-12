@@ -8,19 +8,32 @@
     flex-direction: column;
     flex: 1 1 calc(100% - 310px);
     min-height: 100dvh;
+
+    padding: 10px 20px;
   }
-}
 
-.chats-list {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 310px;
+  &__placeholder {
+    height: 100%;
+    width: 100%;
+    @include flex-center;
 
-  background: #FBFBFB;
-  height: 100dvh;
-  padding: 21px 10px 0;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
 
-  &__header {
+    color: #999999;
+  }
+
+  &__sidebar {
+    flex: 1 1 310px;
+    border-right: 1px solid;
+    color: #EAEAEA;
+    padding: 21px 10px 0;
+  }
+
+  &__sidebar-header {
     display: flex;
     flex-direction: column;
     gap: 23px;
@@ -29,11 +42,21 @@
   }
 }
 
+.chats-list {
+  display: flex;
+  flex-direction: column;
+
+  background: #FBFBFB;
+  height: 100dvh;
+}
+
 .sidebar-nav {
   display: flex;
   justify-content: end;
 
   &__profile {
+    text-decoration: none;
+
     display: flex;
     align-items: center;
     gap: 8px;
