@@ -1,0 +1,76 @@
+<main class="edit-profile">
+    <div class="edit-profile__sidebar">
+        {{> profile-back-button
+                href="/profile"
+
+        }}
+    </div>
+
+    <section class="edit-profile__content">
+
+        <header class="edit-profile__header">
+            {{> profile-avatar
+                    displayName=displayName
+                    showDisplayName=false
+
+            }}
+        </header>
+
+        <form class="edit-profile__form" id="edit-profile-form">
+            {{> input
+                    id="email"
+                    name="email"
+                    type="text"
+                    label="Почта"
+                    value=""
+                    autocomplete="email"
+            }}
+
+            {{> input
+                    id="login"
+                    name="login"
+                    type="text"
+                    label="Логин"
+                    value=""
+                    autocomplete="username"
+            }}
+
+            {{> input
+                    id="first_name"
+                    name="first_name"
+                    type="text"
+                    label="Имя"
+                    value=""
+                    autocomplete="given-name"
+            }}
+
+            {{> input
+                    id="second_name"
+                    name="second_name"
+                    type="text"
+                    label="Фамилия"
+                    value=""
+                    autocomplete="family-name"
+            }}
+
+            {{> input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    label="Телефон"
+                    value=""
+                    autocomplete="tel"
+            }}
+        </form>
+
+        <footer class="edit-profile__footer">
+            {{> button
+                    name="edit-profile-form-submit"
+                    type="submit"
+                    label="Сохранить"
+                    form="edit-profile-form"
+            }}
+        </footer>
+
+    </section>
+</main>

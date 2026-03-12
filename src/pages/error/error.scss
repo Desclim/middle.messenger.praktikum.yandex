@@ -1,0 +1,44 @@
+@use "../../styles/mixins" as *;
+
+.error {
+  @include flex-center;
+
+  min-height: 100dvh;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 69px;
+  }
+
+  &__content {
+    @include flex-center;
+
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__title {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 40px;
+
+    color: #1E1E1E;
+  }
+
+  &__subTitle {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+
+    color: #1E1E1E;
+  }
+
+  &__nav {
+    @include flex-center;
+  }
+}
