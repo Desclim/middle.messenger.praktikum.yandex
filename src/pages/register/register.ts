@@ -1,4 +1,4 @@
-import Handlebars from "handlebars/dist/handlebars.js";
+import Handlebars from 'handlebars'
 import './register.scss'
 import template from "./register.hbs?raw";
 

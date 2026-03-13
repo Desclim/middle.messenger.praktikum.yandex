@@ -1,4 +1,4 @@
-import Handlebars from "handlebars/dist/handlebars.js";
+import Handlebars from 'handlebars';
 import template from './profile.hbs?raw'
 import './profile.scss'
 import type {ProfilePageContext} from "../../mocks/mockProfile";

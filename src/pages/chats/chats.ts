@@ -1,4 +1,4 @@
-import Handlebars from "handlebars/dist/handlebars.js";
+import Handlebars from 'handlebars';
 import './chats.scss'
 import template from "./chats.hbs?raw";
 import {chats} from './mock'
