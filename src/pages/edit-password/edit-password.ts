@@ -1,4 +1,4 @@
-import * as Handlebars from 'handlebars'
+import Handlebars from 'handlebars';
 import template from './edit-password.hbs?raw'
 import './edit-password.scss'
 import {mockProfile} from "../../mocks/mockProfile";

@@ -1,4 +1,4 @@
-import * as Handlebars from 'handlebars'
+import Handlebars from 'handlebars';
 import template from './edit-profile.hbs?raw'
 import './edit-profile.scss'
 import {mockProfile} from "../../mocks/mockProfile";
