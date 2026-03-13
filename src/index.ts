@@ -1,3 +1,4 @@
+import { navigate, router } from './services/router/router';
 import './styles/global.scss';
 
 const app = document.querySelector('#app');
