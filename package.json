@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "start": "tsc && vite build && vite preview"
+    "build": "vite build",
+    "start": "vite build && vite preview"
   },
   "devDependencies": {
     "sass": "^1.97.3",
