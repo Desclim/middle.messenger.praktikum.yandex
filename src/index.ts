@@ -1,1 +1,3 @@
+import './styles/global.scss';
+
 document.body.innerHTML = '<h1 style="font-size: 48px; color: red;">TEST</h1>';
