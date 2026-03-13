@@ -1,4 +1,4 @@
-import Handlebars from "handlebars/dist/handlebars.js";
+import Handlebars from "handlebars";
 import template from "./login.hbs?raw";
 import "./login.scss";
 
