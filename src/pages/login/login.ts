@@ -1,9 +1,11 @@
-import Handlebars from 'handlebars';
-import template from './login.hbs?raw'
-import './login.scss'
+import "./login.scss";
 
-const compiled = Handlebars.compile(template);
 export function LoginPage(): string {
-    return compiled({});
+    return `
+        <main class="login">
+            <div class="login__container">
+                <h1 class="login__title">LOGIN WORKS</h1>
+            </div>
+        </main>
+    `;
 }
-
