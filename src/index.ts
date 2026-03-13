@@ -1,8 +1,5 @@
 import {navigate, router} from "./services/router/router";
-import {handlebarsRegisterPartials} from "./services/handlebarsRegisterPartials/handlebarsRegisterPartials";
 import './styles/global.scss'
-
-handlebarsRegisterPartials();
 
 document.addEventListener('click', (event:MouseEvent) => {
     const target = event.target as HTMLElement | null
