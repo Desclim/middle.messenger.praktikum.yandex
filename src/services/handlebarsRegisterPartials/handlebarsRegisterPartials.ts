@@ -1,4 +1,4 @@
-import * as Handlebars from 'handlebars'
+import Handlebars from 'handlebars'
 import inputTemplate from '../../blocks/input/input.hbs?raw';
 import buttonTemplate from '../../blocks/button/button.hbs?raw';
 import linkTemplate from '../../blocks/link/link.hbs?raw';
