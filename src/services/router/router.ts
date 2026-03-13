@@ -12,3 +12,8 @@ export function router() {
     const route = routes['/'];
     render(route.render());
 }
+
+export function navigate(path:string) {
+    window.history.pushState({}, '', path);
+    router();
+}
