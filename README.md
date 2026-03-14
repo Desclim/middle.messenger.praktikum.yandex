@@ -34,3 +34,6 @@ npm run build
 ```bash
 npm run start
 ```
+
+UI брался с готового шаблона яндекса :
+https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1
