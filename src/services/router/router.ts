@@ -44,7 +44,7 @@ const routes:Record<string, Route> = {
     },
     '/edit-password': {
         render: EditPasswordPage,
-        init:initEditPasswordPage,
+        init:initEditPasswordPage
     },
 };
 
