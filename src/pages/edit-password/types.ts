@@ -7,5 +7,3 @@ export type EditPasswordContext = {
     passwordInput: Input;
     passwordRepeatInput: Input;
 }
-
-

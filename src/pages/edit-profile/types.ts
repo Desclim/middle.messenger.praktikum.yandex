@@ -9,5 +9,3 @@ export type EditProfileContext = {
     secondNameInput: Input;
     phoneInput: Input;
 }
-
-

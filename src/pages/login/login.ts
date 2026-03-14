@@ -6,4 +6,3 @@ const compiled = Handlebars.compile(template)
 export function LoginPage(): string {
     return compiled({});
 }
-

@@ -10,4 +10,3 @@ export function EditProfilePage(): string {
 
     return compiled(context);
 }
-

@@ -10,4 +10,3 @@ export function EditPasswordPage(): string {
 
     return compiled(context);
 }
-

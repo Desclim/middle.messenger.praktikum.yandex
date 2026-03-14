@@ -10,4 +10,3 @@ export function ProfilePage(): string {
 
     return compiled(context);
 }
-
