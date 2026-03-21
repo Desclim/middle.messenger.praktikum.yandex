@@ -1,12 +1,9 @@
 .chat-item {
   text-decoration: none;
-
   display: flex;
   gap: 10px;
-
   padding: 12px;
   cursor: pointer;
-
   border-top: 1px solid #EAEAEA;
   height: 71px;
 
@@ -21,10 +18,8 @@
   &__avatar {
     width: 47px;
     height: 47px;
-
     border-radius: 50%;
     background: #EFEFEF;
-
     flex-shrink: 0;
     overflow: hidden;
 
@@ -49,27 +44,24 @@
   }
 
   &__title {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 13px;
     line-height: 13px;
-
     color: #1E1E1E;
-
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
   &__time {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 9px;
     line-height: 13px;
-
-    color: #999999;
+    color: #999;
   }
 
   &__footer {
@@ -80,14 +72,12 @@
   }
 
   &__message {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
-
-    color: #999999;
-
+    color: #999;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -102,17 +92,14 @@
 
 .counter {
   background: #3369F3;
-
   min-width: 20px;
   height: 20px;
-
   border-radius: 10px;
 
   &__content {
     display: flex;
     align-items: center;
     justify-content: center;
-
     height: 100%;
     width: 100%;
     font-size: 11px;

@@ -6,7 +6,6 @@
 @use "../blocks/post-message/post-message";
 @use "../blocks/profile-avatar/profile-avatar";
 @use "../blocks/profile-back-button/profile-back-button";
-
 @import "@fontsource/inter/400.css";
 @import "@fontsource/inter/500.css";
 @import "@fontsource/inter/600.css";
@@ -20,7 +19,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6,p {

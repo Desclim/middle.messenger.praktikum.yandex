@@ -9,25 +9,20 @@
   &__field {
     flex: 1;
     height: 32px;
-
     border: none;
     outline: none;
-
     border-radius: 30px;
     background: #EFEFEF;
-
     padding: 0 20px;
-
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 12px;
-
     color: #1E1E1E;
 
     &::placeholder {
-      color: #999999;
+      color: #999;
     }
   }
 
@@ -36,14 +31,11 @@
 
     width: 28px;
     height: 28px;
-
     border: none;
     outline: none;
     flex: none;
-
     border-radius: 100%;
     background: #3369F3;
-
     cursor: pointer;
   }
 }

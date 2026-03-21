@@ -1,4 +1,4 @@
-export function render(content:string) {
+export function render(content: string) {
     const app = document.querySelector('#app')
 
     if (!app) {

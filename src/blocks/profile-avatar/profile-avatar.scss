@@ -7,21 +7,18 @@
   gap: 20px;
 
   &__avatar {
-
     width: 130px;
     height: 130px;
-
     border-radius: 50%;
     background: #EFEFEF;
   }
 
   &__name {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 16px;
-
     color: #1E1E1E;
   }
 }
