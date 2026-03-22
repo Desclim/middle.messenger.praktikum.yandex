@@ -1,4 +1,4 @@
-import type { Input } from '../../blocks/input/input';
+import type { Input } from '../../components/input/input';
 
 export type LoginPageContext = {
     loginPage: HTMLElement;

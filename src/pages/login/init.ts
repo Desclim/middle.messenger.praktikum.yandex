@@ -2,7 +2,7 @@ import {validateLogin, validatePassword} from "../../services/validation/validat
 import type {LoginPageContext} from "./types";
 import {bindLoginFormSubmit} from "./handlers";
 
-import {Input} from "../../blocks/input/input";
+import {Input} from "../../components/input/input";
 
 export function initLoginPage(): void {
     const loginPage = document.querySelector('.login') as HTMLElement | null;

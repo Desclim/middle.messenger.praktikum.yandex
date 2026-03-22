@@ -1,4 +1,4 @@
-import {Input} from "../../blocks/input/input";
+import {Input} from "../../components/input/input";
 import {validateDefault, validatePassword, validatePasswordRepeat} from "../../services/validation/validators";
 import type {RegisterPageContext} from "./types";
 import {bindRegisterFormSubmit} from "./handlers";

@@ -1,4 +1,4 @@
-import {Input} from "../../blocks/input/input";
+import {Input} from "../../components/input/input";
 
 export type EditProfileContext = {
     editProfilePage: HTMLElement;

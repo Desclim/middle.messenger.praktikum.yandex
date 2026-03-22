@@ -1,4 +1,4 @@
-import {Input} from "../../blocks/input/input";
+import {Input} from "../../components/input/input";
 import {validateDefault} from "../../services/validation/validators";
 import type {EditProfileContext} from "./types";
 import {bindEditProfileFormSubmit} from "./handlers";

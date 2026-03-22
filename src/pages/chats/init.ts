@@ -1,5 +1,5 @@
-import {Search} from "../../blocks/search/search";
-import {PostMessage} from "../../blocks/post-message/post-message";
+import {Search} from "../../components/search/search";
+import {PostMessage} from "../../components/post-message/post-message";
 
 export function initChatsPage() {
     const chatsPage = document.querySelector('.chats') as HTMLElement | null
