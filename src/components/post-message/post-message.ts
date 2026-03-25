@@ -1,43 +1,54 @@
-import type {PostMessageOptions} from "./type";
+import Block, {type BlockOwnProps} from '../../core/Block';
+import template from './post-message.hbs?raw';
+import './post-message.scss';
+import {validateDefault} from "../../services/validation/validators";
 
-export class PostMessage {
-    private root: HTMLElement;
-    private form: HTMLFormElement;
-    private field: HTMLInputElement;
-    private onSubmit?: (value: string) => void;
+interface PostMessageProps extends BlockOwnProps {
+  name: string;
+  ref: string;
+}
 
-    constructor(options: PostMessageOptions) {
-        this.root = options.root;
-        this.onSubmit = options.onSubmit;
+export class PostMessage extends Block<PostMessageProps> {
+  static componentName = 'PostMessage';
 
-        this.form = this.root as HTMLFormElement;
-        this.field = this.root.querySelector('.post-message__field') as HTMLInputElement;
+  protected template = template;
 
-        this.bindEvents();
+  constructor(props: PostMessageProps) {
+    super(props);
+  }
+
+  public getField(): HTMLInputElement {
+    const key = this.props.ref;
+    const field = this.refs[key];
+
+    if (!(field instanceof HTMLInputElement)) {
+      throw new Error(`Поле с ref=${key} не найдено`);
     }
 
-    getValue(): string {
-        return this.field.value;
+    return field;
+  }
+
+  public getName(): string {
+    return this.props.name;
+  }
+
+  public getValue(): string {
+    return this.getField()?.value ?? '';
+  }
+
+  public setValue(value: string): void {
+    const field = this.getField();
+
+    field.value = value;
+  }
+
+  public validate(): boolean {
+    const message = validateDefault(this.getValue())
+
+    if (message) {
+      return false
     }
 
-    clear(): void {
-        this.field.value = '';
-    }
-
-    private handleSubmit = (event: Event): void => {
-        event.preventDefault();
-
-        const value = this.getValue().trim();
-
-        if (!value) {
-            return;
-        }
-
-        this.onSubmit?.(value);
-        this.clear();
-    };
-
-    private bindEvents(): void {
-        this.form.addEventListener('submit', this.handleSubmit);
-    }
+    return true
+  }
 }

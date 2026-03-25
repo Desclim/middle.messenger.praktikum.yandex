@@ -1,139 +1,163 @@
-import type { InputOptions, MasksInput } from "./types";
+import Block, {type BlockOwnProps} from '../../core/Block';
+import template from './input.hbs?raw';
+import './input.scss';
+import {formatPhone} from "../../services/formats/formatPhone";
 
-function formatPhone(value: string): string {
-    let digits = value.replace(/\D/g, '');
-
-    if (!digits.length) {
-        return '';
-    }
-
-    if (digits[0] === '8') {
-        digits = '7' + digits.slice(1);
-    }
-
-    if (digits[0] !== '7') {
-        digits = '7' + digits;
-    }
-
-    digits = digits.slice(0, 11);
-
-    let result = '+7';
-
-    if (digits.length > 1) {
-        result += ' (' + digits.slice(1, 4);
-    }
-
-    if (digits.length >= 5) {
-        result += ') ' + digits.slice(4, 7);
-    }
-
-    if (digits.length >= 8) {
-        result += ' ' + digits.slice(7, 9);
-    }
-
-    if (digits.length >= 10) {
-        result += ' ' + digits.slice(9, 11);
-    }
-
-    return result;
+interface InputProps extends BlockOwnProps {
+  id: string;
+  name: string;
+  type: string;
+  label: string;
+  value?: string;
+  autocomplete?: string;
+  ref: string;
+  validator?: (value: string) => string;
+  mask?: 'phone';
 }
 
-export class Input {
-    private root: HTMLElement;
-    private value: string;
-    private field: HTMLInputElement;
-    private mask: MasksInput
-    private errorElement: HTMLElement | null;
-    private validator?: (value: string) => string;
+export class Input extends Block<InputProps> {
+  public static componentName = 'Input';
+  protected template = template;
 
-    constructor(options: InputOptions) {
-        this.root = options.root;
-        this.validator = options.validator;
-        this.mask = options.mask as MasksInput
-        this.value = options.value as string
+  protected componentDidMount(): void {
+    const field = this.getField();
 
-        this.field = this.root.querySelector('.input__field') as HTMLInputElement;
-        this.errorElement = this.root.querySelector('.input__error');
-
-        this.bindEvents()
+    if (!field) {
+      return;
     }
 
-    private updateState(): void {
-        const isFocused = document.activeElement === this.field;
-        const hasValue = this.field.value.trim().length > 0;
+    this.updateState(field);
 
-        this.root.classList.toggle('input_focused', isFocused);
-        this.root.classList.toggle('input_filled', hasValue);
+    if (this.props.value) {
+      field.value = this.props.value;
+      this.updateState(field);
     }
 
-    getValue(): string {
-        return this.field.value;
+    field.addEventListener('blur', this.handleBlur);
+    field.addEventListener('focus', this.handleFocus);
+    field.addEventListener('input', this.handleInput);
+  }
+
+  protected componentWillUnmount(): void {
+    const field = this.getField();
+
+    if (!field) {
+      return;
     }
 
-    setValue(textContent: string): void {
-        this.field.value = textContent;
+    field.removeEventListener('blur', this.handleBlur);
+    field.removeEventListener('focus', this.handleFocus);
+    field.removeEventListener('input', this.handleInput);
+  }
+
+  public getName(): string {
+    return this.props.name;
+  }
+  public getValue(): string {
+    return this.getField()?.value ?? '';
+  }
+
+  public showError(message: string): void {
+    const error = this.getErrorElement();
+
+    if (error) {
+      error.textContent = message;
+    }
+  }
+
+  public hideError(): void {
+    const error = this.getErrorElement();
+
+    if (error) {
+      error.textContent = '';
+    }
+  }
+
+  public validate(): boolean {
+    const validator = this.props.validator;
+
+    if (!validator) {
+      this.hideError();
+      return true;
     }
 
-    showError(message: string): void {
-        if (this.errorElement) {
-            this.errorElement.textContent = message;
-        }
+    const message = validator(this.getValue());
+
+    if (message) {
+      this.showError(message);
+      return false;
     }
 
-    hideError(): void {
-        if (this.errorElement) {
-            this.errorElement.textContent = '';
-        }
+    this.hideError();
+    return true;
+  }
+
+  public getField(): HTMLInputElement {
+    const key = this.props.ref;
+    const field = this.refs[key];
+
+    if (!(field instanceof HTMLInputElement)) {
+      throw new Error(`Поле с ref=${key} не найдено`);
     }
 
-    validate(): boolean {
-        if (!this.validator) {
-            return true;
-        }
+    return field;
+  }
 
-        const message = this.validator(this.getValue());
+  private getErrorElement(): HTMLElement | null {
+    const error = this.refs.error;
 
-        if (message) {
-            this.showError(message);
-            return false;
-        }
+    return error instanceof HTMLElement ? error : null;
+  }
 
-        this.hideError();
-        return true;
+  private updateState(field: HTMLInputElement): void {
+    const root = this.element();
+
+    if (!root) {
+      return;
     }
 
-    bindEvents(): void {
-        this.updateState()
+    const isFocused = document.activeElement === field;
+    const hasValue = field.value.trim().length > 0;
 
-        if (this.value) {
-            this.setValue(this.value)
-            this.updateState();
-        }
+    root.classList.toggle('input_focused', isFocused);
+    root.classList.toggle('input_filled', hasValue);
+  }
 
-        this.field.addEventListener('blur', () => {
-            this.updateState();
-            this.validate();
-        });
+  private handleBlur = (): void => {
+    const field = this.getField();
 
-        this.field.addEventListener('focus', () => {
-            this.updateState();
-            this.hideError();
-        });
-
-        this.field.addEventListener('input', (event) => {
-            const target = event.target as HTMLInputElement;
-            if (this.mask === 'phone') {
-                const digits = target.value.replace(/\D/g, '');
-
-                if (!digits.length) {
-                    target.value = '';
-                } else {
-                    target.value = formatPhone(target.value);
-                }
-            }
-
-            this.updateState();
-            this.hideError();
-        });
+    if (!field) {
+      return;
     }
+
+    this.updateState(field);
+    this.validate();
+  };
+
+  private handleFocus = (): void => {
+    const field = this.getField();
+
+    if (!field) {
+      return;
+    }
+
+    this.updateState(field);
+    this.hideError();
+  };
+
+  private handleInput = (event: Event): void => {
+    const target = event.target;
+
+    if (!(target instanceof HTMLInputElement)) {
+      return;
+    }
+
+    if (this.props.mask === 'phone') {
+      const digits = target.value.replace(/\D/g, '');
+      target.value = digits.length ? formatPhone(target.value) : '';
+    }
+
+    this.updateState(target);
+    this.hideError();
+  };
 }

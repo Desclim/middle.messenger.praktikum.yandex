@@ -1,17 +1,16 @@
 <main class="profile">
     <div class="profile__sidebar">
-        {{> profile-back-button
-                href="/chats"
-        }}
+      {{{ ProfileBackButton href="/chats" ref="profileBackButton" }}}
     </div>
 
     <section class="profile__content">
 
         <header class="profile__header">
-            {{> profile-avatar
+            {{{ ProfileAvatar
                     displayName=displayName
                     showDisplayName=true
-            }}
+                    ref="profileAvatar"
+            }}}
         </header>
 
         <ul class="profile__info">

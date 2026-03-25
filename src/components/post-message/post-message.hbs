@@ -1,10 +1,11 @@
-<form class="post-message" data-post-message="{{name}}">
+<form class="post-message" >
     <input
             class="post-message__field"
             type="text"
             name="{{name}}"
             placeholder="Сообщение"
             autocomplete="off"
+            ref="{{ref}}"
     />
 
     <button
@@ -15,7 +16,7 @@
         <img
                 class="post-message__icon"
                 src="/icons/arrow-right-v2.svg"
-                alt=""
+                alt="Отправить"
         />
     </button>
 </form>

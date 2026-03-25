@@ -7,10 +7,18 @@
   gap: 20px;
 
   &__avatar {
+    position: relative;
     width: 130px;
     height: 130px;
     border-radius: 50%;
     background: #EFEFEF;
+  }
+
+  &__input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
   }
 
   &__name {
