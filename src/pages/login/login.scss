@@ -8,13 +8,11 @@
   &__container {
     display: flex;
     flex-direction: column;
-
     width: 340px;
     height: 450px;
     border-radius: 12px;
-    box-shadow: 0 0 6px rgba(0,0,0,0.14);
-
-    padding: 50px 30px 30px 30px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+    padding: 50px 30px 30px;
   }
 
   &__header {
@@ -22,13 +20,12 @@
   }
 
   &__title {
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 20px;
     text-align: center;
-
     color: #1E1E1E;
   }
 
@@ -40,7 +37,6 @@
 
   &__footer {
     margin-top: auto;
-
     display: flex;
     flex-direction: column;
     gap: 14px;

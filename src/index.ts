@@ -1,26 +1,26 @@
-import {navigate, router} from "./services/router/router";
-import {handlebarsRegisterPartials} from "./services/handlebarsRegisterPartials/handlebarsRegisterPartials";
-import './styles/global.scss'
+import { navigate, router } from './services/router/router';
+import './styles/global.scss';
+import {registryComponents} from "./services/registryComponents/registryComponents";
 
-handlebarsRegisterPartials();
+registryComponents()
 
-document.addEventListener('click', (event:MouseEvent) => {
-    const target = event.target as HTMLElement | null
-    const link = target?.closest('[data-link]') as HTMLAnchorElement;
+document.addEventListener('click', (event: MouseEvent) => {
+  const target = event.target as HTMLElement | null;
+  const link = target?.closest('[data-link]') as HTMLAnchorElement | null;
 
-    if (!link) {
-        return;
-    }
+  if (!link) {
+    return;
+  }
 
-    event.preventDefault();
+  event.preventDefault();
 
-    const href = link.getAttribute('href');
+  const href = link.getAttribute('href');
 
-    if (!href) {
-        return;
-    }
+  if (!href) {
+    return;
+  }
 
-    navigate(href);
+  navigate(href);
 });
 
 window.addEventListener('DOMContentLoaded', router);

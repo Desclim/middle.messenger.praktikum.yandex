@@ -1,0 +1,20 @@
+.button {
+  padding: 12px;
+  width: 100%;
+  height: fit-content;
+  background: #3369f3;
+  border-radius: 8px;
+
+  &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: #FFF;
+  }
+
+}

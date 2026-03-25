@@ -1,87 +1,103 @@
 <main class="register">
-    <div class="register__container">
-        <header class="register__header">
-            <h1 class="register__title">Регистрация</h1>
-        </header>
+  <div class="register__container">
+    <header class="register__header">
+      <h1 class="register__title">Регистрация</h1>
+    </header>
 
-        <form class="register__form" id="register-form">
-            {{> input
-                    id="email"
-                    name="email"
-                    type="text"
-                    label="Почта"
-                    value=""
-                    autocomplete="email"
-            }}
+    <form class="register__form" id="register-form">
+      {{{ Input
+        id="email"
+        name="email"
+        type="text"
+        label="Почта"
+        value=""
+        autocomplete="email"
+        ref="email"
+        validator=emailValidator
+      }}}
 
-            {{> input
-                    id="login"
-                    name="login"
-                    type="text"
-                    label="Логин"
-                    value=""
-                    autocomplete="username"
-            }}
+      {{{ Input
+        id="login"
+        name="login"
+        type="text"
+        label="Логин"
+        value=""
+        autocomplete="username"
+        ref="login"
+        validator=loginValidator
+      }}}
 
-            {{> input
-                    id="first_name"
-                    name="first_name"
-                    type="text"
-                    label="Имя"
-                    value=""
-                    autocomplete="given-name"
-            }}
+      {{{ Input
+        id="first_name"
+        name="first_name"
+        type="text"
+        label="Имя"
+        value=""
+        autocomplete="given-name"
+        ref="first_name"
+        validator=nameValidator
+      }}}
 
-            {{> input
-                    id="second_name"
-                    name="second_name"
-                    type="text"
-                    label="Фамилия"
-                    value=""
-                    autocomplete="family-name"
-            }}
+      {{{ Input
+        id="second_name"
+        name="second_name"
+        type="text"
+        label="Фамилия"
+        value=""
+        autocomplete="family-name"
+        ref="second_name"
+        validator=nameValidator
+      }}}
 
-            {{> input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    label="Телефон"
-                    value=""
-                    autocomplete="tel"
-            }}
+      {{{ Input
+        id="phone"
+        name="phone"
+        type="tel"
+        label="Телефон"
+        value=""
+        autocomplete="tel"
+        ref="phone"
+        validator=phoneValidator
+        mask="phone"
+      }}}
 
-            {{> input
-                    id="password"
-                    name="password"
-                    type="password"
-                    label="Пароль"
-                    value=""
-                    autocomplete="new-password"
-            }}
+      {{{ Input
+        id="password"
+        name="password"
+        type="password"
+        label="Пароль"
+        value=""
+        autocomplete="new-password"
+        ref="password"
+        validator=passwordValidator
+      }}}
 
-            {{> input
-                    id="password-repeat"
-                    name="password-repeat"
-                    type="password"
-                    label="Пароль (ещё раз)"
-                    value=""
-                    autocomplete="new-password"
-            }}
-        </form>
+      {{{ Input
+        id="password_repeat"
+        name="password_repeat"
+        type="password"
+        label="Пароль (ещё раз)"
+        value=""
+        autocomplete="new-password"
+        ref="password_repeat"
+        validator=passwordRepeatValidator
+      }}}
+    </form>
 
-        <aside class="register__footer">
-            {{> button
-                    name="register-submit"
-                    type="submit"
-                    label="Зарегистрироваться"
-                    form="register-form"
-            }}
-            <nav class="register__nav">
-                {{> link
-                        href="/"
-                        label="Войти"
-                }}
-            </nav>
-        </aside>
-    </div>
+    <aside class="register__footer">
+      {{{ Button
+        name="register-submit"
+        type="submit"
+        label="Зарегистрироваться"
+        form="register-form"
+      }}}
+
+      <nav class="register__nav">
+        {{{ Link
+          href="/"
+          label="Войти"
+        }}}
+      </nav>
+    </aside>
+  </div>
 </main>

@@ -1,0 +1,19 @@
+@use "../../styles/mixins" as *;
+
+.profile-back-button{
+  @include flex-center;
+
+  width: 64px;
+  background: #fbfbfb;
+  border-right: 1px solid #EAEAEA;
+  height: 100%;
+
+  &__back {
+    @include flex-center;
+
+    width: 28px;
+    height: 28px;
+    background: #3369f3;
+    border-radius: 50%;
+  }
+}
