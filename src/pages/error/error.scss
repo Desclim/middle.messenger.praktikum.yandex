@@ -1,4 +1,5 @@
 @use "../../styles/mixins" as *;
+@use '../../styles/variables' as *;
 
 .error {
   @include flex-center;
@@ -24,7 +25,7 @@
     font-weight: 500;
     font-size: 40px;
     line-height: 40px;
-    color: #1E1E1E;
+    color: $color-text-main;
   }
 
   &__subTitle {
@@ -33,7 +34,7 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 20px;
-    color: #1E1E1E;
+    color: $color-text-main;
   }
 
   &__nav {

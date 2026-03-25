@@ -1,4 +1,5 @@
 @use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
 
 .chats {
   display: flex;
@@ -22,13 +23,13 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 12px;
-    color: #999;
+    color: $color-text-secondary;
   }
 
   &__sidebar {
     flex: 1 1 310px;
     border-right: 1px solid;
-    color: #EAEAEA;
+    color: $color-border;
     padding: 21px 10px 0;
   }
 
@@ -43,7 +44,7 @@
 .chats-list {
   display: flex;
   flex-direction: column;
-  background: #FBFBFB;
+  background: $color-bg-page;
   height: 100dvh;
 }
 
@@ -61,7 +62,7 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 12px;
-    color: #999;
+    color: $color-text-secondary;
   }
 
   &__arrow {

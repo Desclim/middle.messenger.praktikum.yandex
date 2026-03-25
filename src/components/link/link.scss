@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 .link {
   text-decoration: none;
   font-family: Inter, sans-serif;
@@ -5,5 +7,5 @@
   font-weight: 500;
   font-size: 11px;
   line-height: 11px;
-  color: #3369F3;
+  color: $color-primary;
 }

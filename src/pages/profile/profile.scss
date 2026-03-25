@@ -1,4 +1,5 @@
 @use "../../styles/mixins" as *;
+@use '../../styles/variables' as *;
 
 .profile {
   display: flex;
@@ -31,7 +32,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid $color-border;
     font-size: 13px;
 
     &:last-child {
@@ -45,7 +46,7 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: #1E1E1E;
+    color: $color-text-main;
   }
 
   &__value {
@@ -54,7 +55,7 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: #999;
+    color: $color-text-secondary;
   }
 
   &__actions {
@@ -66,13 +67,13 @@
   &__action {
     text-decoration: none;
     padding: 10px 0;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid $color-border;
     font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: #3369F3;
+    color: $color-primary;
   }
 
   &__logout {
@@ -86,6 +87,6 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: #F00;
+    color: $color-primary-red;
   }
 }

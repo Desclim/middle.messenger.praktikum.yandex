@@ -1,8 +1,10 @@
+@use '../../styles/variables' as *;
+
 .button {
   padding: 12px;
   width: 100%;
   height: fit-content;
-  background: #3369f3;
+  background: $color-primary;
   border-radius: 8px;
 
   &__text {
@@ -14,7 +16,7 @@
     font-weight: 500;
     font-size: 13px;
     line-height: 13px;
-    color: #FFF;
+    color: $color-text-inverse;
   }
 
 }
