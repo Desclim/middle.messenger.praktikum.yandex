@@ -1,21 +1,21 @@
-import Block, { type BlockOwnProps } from '../../core/Block';
+import Block, {type BlockOwnProps} from '../../core/Block';
 import template from './edit-password.hbs?raw';
 import './edit-password.scss';
 
-import { Input } from '../../components/input/input';
-import { mockProfile } from '../../mocks/mockProfile';
-import { navigate } from '../../services/router/router';
+import {Input} from '../../components/input/input';
+import {mockProfile} from '../../mocks/mockProfile';
+import {navigate} from '../../services/router/router';
 import {
   validateDefault,
   validatePassword,
   validatePasswordRepeat,
 } from '../../services/validation/validators';
-import { getComponentByName } from '../../utils/getComponentByName';
+import {getComponentByName} from '../../utils/getComponentByName';
 
 interface EditPasswordPageProps extends BlockOwnProps {
   displayName: string;
-  passwordRepeatValidator: (value: string) => string;
-  passwordValidator: (value: string) => string;
+  newPasswordRepeatValidator: (value: string) => string;
+  newPasswordValidator: (value: string) => string;
 }
 
 export class EditPasswordPage extends Block<EditPasswordPageProps> {
@@ -25,8 +25,8 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
   constructor() {
     super({
       displayName: mockProfile.displayName,
-      passwordValidator: validatePassword,
-      passwordRepeatValidator: validateDefault,
+      newPasswordValidator: validatePassword,
+      newPasswordRepeatValidator: validateDefault,
     });
   }
 
@@ -37,10 +37,10 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
       return;
     }
 
-    const { passwordInput, passwordRepeatInput } = passwordInputs;
+    const {newPasswordInput, newPasswordRepeatInput} = passwordInputs;
 
-    passwordInput.getField().addEventListener('blur', this.passwordBlurHandler);
-    passwordRepeatInput.getField().addEventListener('blur', this.passwordBlurHandler);
+    newPasswordInput.getField().addEventListener('blur', this.passwordBlurHandler);
+    newPasswordRepeatInput.getField().addEventListener('blur', this.passwordBlurHandler);
   }
 
   protected componentWillUnmount(): void {
@@ -50,19 +50,19 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
       return;
     }
 
-    const { passwordInput, passwordRepeatInput } = passwordInputs;
+    const {newPasswordInput, newPasswordRepeatInput} = passwordInputs;
 
-    passwordInput.getField().removeEventListener('blur', this.passwordBlurHandler);
-    passwordRepeatInput.getField().removeEventListener('blur', this.passwordBlurHandler);
+    newPasswordInput.getField().removeEventListener('blur', this.passwordBlurHandler);
+    newPasswordRepeatInput.getField().removeEventListener('blur', this.passwordBlurHandler);
   }
 
   protected events = {
     submit: (event: Event) => {
       event.preventDefault();
 
-      const oldPasswordInput = getComponentByName(this.children, Input, 'password-old');
-      const passwordInput = getComponentByName(this.children, Input, 'password');
-      const passwordRepeatInput = getComponentByName(this.children, Input, 'password-repeat');
+      const oldPasswordInput = getComponentByName(this.children, Input, 'old_password');
+      const passwordInput = getComponentByName(this.children, Input, 'new_password');
+      const passwordRepeatInput = getComponentByName(this.children, Input, 'new_password_repeat');
 
       if (!oldPasswordInput || !passwordInput || !passwordRepeatInput) {
         return;
@@ -84,27 +84,23 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
 
       console.log({
         oldPassword: oldPasswordInput.getValue(),
-        password: passwordInput.getValue(),
-        passwordRepeat: passwordRepeatInput.getValue(),
+        newPassword: passwordInput.getValue(),
+        newPasswordRepeat: passwordRepeatInput.getValue(),
       });
 
       navigate('/profile');
     },
   };
 
-  private getPasswordInputs(): { passwordInput: Input, passwordRepeatInput: Input } | null {
-    const passwordInput = getComponentByName(this.children, Input, 'password');
-    const passwordRepeatInput = getComponentByName(
-      this.children,
-      Input,
-      'password-repeat',
-    );
+  private getPasswordInputs(): { newPasswordInput: Input, newPasswordRepeatInput: Input } | null {
+    const newPasswordInput = getComponentByName(this.children, Input, 'new_password');
+    const newPasswordRepeatInput = getComponentByName(this.children, Input, 'new_password_repeat');
 
-    if (!passwordInput || !passwordRepeatInput) {
+    if (!newPasswordInput || !newPasswordRepeatInput) {
       return null;
     }
 
-    return { passwordInput, passwordRepeatInput };
+    return {newPasswordInput, newPasswordRepeatInput};
   }
 
   private passwordBlurHandler = (): void => {
@@ -118,23 +114,23 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
       return false;
     }
 
-    const { passwordInput, passwordRepeatInput } = passwordInputs;
+    const {newPasswordInput, newPasswordRepeatInput} = passwordInputs;
 
-    const password = passwordInput.getValue();
-    const passwordRepeat = passwordRepeatInput.getValue();
+    const newPassword = newPasswordInput.getValue();
+    const newPasswordRepeat = newPasswordRepeatInput.getValue();
 
-    if (!passwordRepeat.trim()) {
+    if (!newPasswordRepeat.trim()) {
       return false;
     }
 
-    const error = validatePasswordRepeat(passwordRepeat, password);
+    const error = validatePasswordRepeat(newPasswordRepeat, newPassword);
 
     if (error) {
-      passwordRepeatInput.showError(error);
+      newPasswordRepeatInput.showError(error);
       return false;
     }
 
-    passwordRepeatInput.hideError();
+    newPasswordRepeatInput.hideError();
     return true;
   }
 }
