@@ -1,0 +1,63 @@
+<main class="profile">
+    <div class="profile__sidebar">
+      {{{ ProfileBackButton href="/chats" ref="profileBackButton" }}}
+    </div>
+
+    <section class="profile__content">
+
+        <header class="profile__header">
+            {{{ ProfileAvatar
+                    displayName=displayName
+                    showDisplayName=true
+                    ref="profileAvatar"
+            }}}
+        </header>
+
+        <ul class="profile__info">
+            <li class="profile__row">
+                <span class="profile__label">Почта</span>
+                <span class="profile__value">{{email}}</span>
+            </li>
+
+            <li class="profile__row">
+                <span class="profile__label">Логин</span>
+                <span class="profile__value">{{login}}</span>
+            </li>
+
+            <li class="profile__row">
+                <span class="profile__label">Имя</span>
+                <span class="profile__value">{{firstName}}</span>
+            </li>
+
+            <li class="profile__row">
+                <span class="profile__label">Фамилия</span>
+                <span class="profile__value">{{secondName}}</span>
+            </li>
+
+            <li class="profile__row">
+                <span class="profile__label">Имя в чате</span>
+                <span class="profile__value">{{displayName}}</span>
+            </li>
+
+            <li class="profile__row">
+                <span class="profile__label">Телефон</span>
+                <span class="profile__value">{{phone}}</span>
+            </li>
+        </ul>
+
+        <nav class="profile__actions">
+            <a href="/edit-profile" class="profile__action" data-link>
+                Изменить данные
+            </a>
+
+            <a href="/edit-password" class="profile__action" data-link>
+                Изменить пароль
+            </a>
+
+            <button class="profile__logout" type="button">
+                Выйти
+            </button>
+        </nav>
+
+    </section>
+</main>

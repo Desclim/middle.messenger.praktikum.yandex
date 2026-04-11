@@ -1,0 +1,55 @@
+@use '../../styles/variables' as *;
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__content {
+    position: relative;
+  }
+
+  &__field {
+    width: 100%;
+    padding: 17px 0 7px;
+    border: none;
+    border-bottom: 1px solid $color-primary;
+    outline: none;
+    background: transparent;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 13px;
+    color: $color-text-main;
+  }
+
+  &__label {
+    position: absolute;
+    left: 0;
+    top: 18px;
+    pointer-events: none;
+    transform-origin: left top;
+    transition: top 0.2s ease, font-size 0.2s ease, line-height 0.2s ease, color 0.2s ease;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+    color: $color-text-secondary;
+  }
+
+  &__error {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 8px;
+    color: $color-error;
+    height: 8px;
+  }
+
+  &_focused &__label,
+  &_filled &__label {
+    top: 0;
+    font-size: 9px;
+    line-height: 9px;
+  }
+}

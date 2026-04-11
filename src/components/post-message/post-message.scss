@@ -1,0 +1,43 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.post-message {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  flex: 0;
+
+  &__field {
+    flex: 1;
+    height: 32px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    background: #EFEFEF;
+    padding: 0 20px;
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 12px;
+    color: $color-text-main;
+
+    &::placeholder {
+      color: $color-text-secondary;
+    }
+  }
+
+  &__submit {
+    @include flex-center;
+
+    width: 28px;
+    height: 28px;
+    border: none;
+    outline: none;
+    flex: none;
+    border-radius: 100%;
+    background: $color-primary;
+    cursor: pointer;
+  }
+}

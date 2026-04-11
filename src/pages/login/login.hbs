@@ -1,0 +1,47 @@
+<main class="login">
+  <div class="login__container">
+    <header class="login__header">
+      <h1 class="login__title">Вход</h1>
+    </header>
+
+    <form class="login__form" id="login-form">
+      {{{ Input
+        id="login"
+        name="login"
+        type="text"
+        label="Логин"
+        value=""
+        autocomplete="username"
+        ref="login"
+        validator=loginValidator
+      }}}
+
+      {{{ Input
+        id="password"
+        name="password"
+        type="password"
+        label="Пароль"
+        value=""
+        autocomplete="current-password"
+        ref="password"
+        validator=passwordValidator
+      }}}
+    </form>
+
+    <aside class="login__footer">
+      {{{ Button
+        name="login-submit"
+        type="submit"
+        label="Авторизоваться"
+        form="login-form"
+      }}}
+
+      <nav class="login__nav">
+        {{{ Link
+          href="/register"
+          label="Нет аккаунта?"
+        }}}
+      </nav>
+    </aside>
+  </div>
+</main>

@@ -1,0 +1,20 @@
+@use "../../styles/mixins" as *;
+@use '../../styles/variables' as *;
+
+.profile-back-button{
+  @include flex-center;
+
+  width: 64px;
+  background: $color-bg-page;
+  border-right: 1px solid $color-border;
+  height: 100%;
+
+  &__back {
+    @include flex-center;
+
+    width: 28px;
+    height: 28px;
+    background: $color-primary;
+    border-radius: 50%;
+  }
+}

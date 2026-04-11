@@ -1,0 +1,49 @@
+@use "../../styles/mixins" as *;
+@use '../../styles/variables' as *;
+
+.login {
+  @include flex-center;
+
+  min-height: 100dvh;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 340px;
+    height: 450px;
+    border-radius: 12px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+    padding: 50px 30px 30px;
+  }
+
+  &__header {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    font-family: Inter, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: $color-text-main;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  &__nav {
+    @include flex-center;
+  }
+}
