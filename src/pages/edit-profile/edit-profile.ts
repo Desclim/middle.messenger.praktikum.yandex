@@ -1,10 +1,9 @@
-import Block, {type BlockOwnProps} from '../../core/Block';
+import Block, {type BlockOwnProps} from '../../core/Component/Block';
 import template from './edit-profile.hbs?raw';
 import './edit-profile.scss';
 
 import {Input} from '../../components/input/input';
 import {mockProfile} from '../../mocks/mockProfile';
-import {navigate} from '../../services/router/router';
 import {
   validateEmail,
   validateLogin,
@@ -12,6 +11,8 @@ import {
   validatePhone,
 } from '../../services/validation/validators';
 import {getComponentByName} from '../../utils/getComponentByName';
+import {navigate} from "../../core/Router/navigate";
+import {APP_ROUTES} from "../../core/Router/routes";
 
 interface EditProfilePageProps extends BlockOwnProps {
   email: string;
@@ -90,7 +91,7 @@ export class EditProfilePage extends Block<EditProfilePageProps> {
         phone: phoneInput.getValue(),
       });
 
-      navigate('/profile');
+      navigate(APP_ROUTES.PROFILE);
     },
   };
 }

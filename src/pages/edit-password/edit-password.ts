@@ -1,16 +1,17 @@
-import Block, {type BlockOwnProps} from '../../core/Block';
+import Block, {type BlockOwnProps} from '../../core/Component/Block';
 import template from './edit-password.hbs?raw';
 import './edit-password.scss';
 
 import {Input} from '../../components/input/input';
 import {mockProfile} from '../../mocks/mockProfile';
-import {navigate} from '../../services/router/router';
 import {
   validateDefault,
   validatePassword,
   validatePasswordRepeat,
 } from '../../services/validation/validators';
 import {getComponentByName} from '../../utils/getComponentByName';
+import {navigate} from "../../core/Router/navigate";
+import {APP_ROUTES} from "../../core/Router/routes";
 
 interface EditPasswordPageProps extends BlockOwnProps {
   displayName: string;
@@ -88,7 +89,7 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
         newPasswordRepeat: passwordRepeatInput.getValue(),
       });
 
-      navigate('/profile');
+      navigate(APP_ROUTES.PROFILE);
     },
   };
 

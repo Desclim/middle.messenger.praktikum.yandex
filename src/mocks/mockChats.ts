@@ -1,4 +1,4 @@
-import type {Chat} from "../pages/chats/type";
+import type {Chat} from "../pages/messenger/type";
 
 
 export const chatsMock: Chat[] = [

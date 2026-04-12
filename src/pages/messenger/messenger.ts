@@ -1,18 +1,19 @@
-import Block, {type BlockOwnProps} from '../../core/Block';
-import template from './chats.hbs?raw';
-import './chats.scss';
+import Block, {type BlockOwnProps} from '../../core/Component/Block';
+import template from './messenger.hbs?raw';
+import './messenger.scss';
 import type {Chat} from './type';
 import {chatsMock} from '../../mocks/mockChats';
 import {getComponentByName} from "../../utils/getComponentByName";
 import {Search} from "../../components/search/search";
+import store from "../../core/Store/Store";
 
-interface ChatsPageProps extends BlockOwnProps {
+interface MessengerPageProps extends BlockOwnProps {
   chats: Chat[];
   selectedChat: Chat | null;
 }
 
-export class ChatsPage extends Block<ChatsPageProps> {
-  static componentName = 'ChatsPage';
+export class MessengerPage extends Block<MessengerPageProps> {
+  static componentName = 'MessengerPage';
   protected template = template;
 
   constructor() {
@@ -63,6 +64,7 @@ export class ChatsPage extends Block<ChatsPageProps> {
       });
     },
     input: () => {
+      console.log(store);
       const searchInput = getComponentByName(this.children, Search, 'search')
       if (!searchInput) {
         return

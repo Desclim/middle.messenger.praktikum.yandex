@@ -1,8 +1,8 @@
-import Block, {type BlockOwnProps} from '../../core/Block';
+import Block, {type BlockOwnProps} from '../../core/Component/Block';
 import template from './profile.hbs?raw';
 import './profile.scss';
 import {mockProfile} from '../../mocks/mockProfile';
-import {navigate} from '../../services/router/router';
+import AuthController from "../../controllers/AuthController";
 
 interface ProfilePageProps extends BlockOwnProps {
   email: string;
@@ -43,7 +43,7 @@ export class ProfilePage extends Block<ProfilePageProps> {
         return;
       }
 
-      navigate('/');
+      void AuthController.logout()
     },
   };
 }

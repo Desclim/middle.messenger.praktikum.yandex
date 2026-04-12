@@ -1,7 +1,7 @@
-import Block, {type BlockOwnProps} from '../../core/Block';
-import template from './chat-content.hbs?raw';
-import './chat-content.scss';
-import type {Chat} from '../../pages/chats/type';
+import Block, {type BlockOwnProps} from '../../core/Component/Block';
+import template from './messenger-content.hbs?raw';
+import './messenger-content.scss';
+import type {Chat} from '../../pages/messenger/type';
 import {getComponentByName} from "../../utils/getComponentByName";
 import {PostMessage} from "../../components/post-message/post-message";
 
@@ -9,8 +9,8 @@ interface ChatContentProps extends BlockOwnProps {
   selectedChat: Chat | null;
 }
 
-export class ChatContent extends Block<ChatContentProps> {
-  static componentName = 'ChatContent';
+export class MessengerContent extends Block<ChatContentProps> {
+  static componentName = 'MessengerContent';
   protected template = template;
 
   constructor(props: ChatContentProps) {

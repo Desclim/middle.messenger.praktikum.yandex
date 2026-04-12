@@ -1,7 +1,8 @@
-import Block, {type BlockOwnProps} from '../../core/Block';
+import Block, {type BlockOwnProps} from '../../core/Component/Block';
 import template from './input.hbs?raw';
 import './input.scss';
 import {formatPhone} from "../../services/formats/formatPhone";
+import {getValueFromMaskPhone} from "../../utils/getValueFromMaskPhone";
 
 interface InputProps extends BlockOwnProps {
   id: string;
@@ -53,7 +54,12 @@ export class Input extends Block<InputProps> {
   public getName(): string {
     return this.props.name;
   }
+
   public getValue(): string {
+    if (this.props.mask === 'phone') {
+      return this.getField()?.value ? getValueFromMaskPhone(this.getField()?.value) : ''
+    }
+
     return this.getField()?.value ?? '';
   }
 

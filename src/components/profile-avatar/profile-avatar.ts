@@ -1,4 +1,4 @@
-import Block, { type BlockOwnProps } from '../../core/Block';
+import Block, { type BlockOwnProps } from '../../core/Component/Block';
 import template from './profile-avatar.hbs?raw';
 import './profile-avatar.scss';
 

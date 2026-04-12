@@ -1,6 +1,6 @@
-import Block, {type BlockOwnProps} from '../../core/Block';
-import template from './register.hbs?raw';
-import './register.scss';
+import Block, {type BlockOwnProps} from '../../core/Component/Block';
+import template from './sign-up.hbs?raw';
+import './sign-up.scss';
 
 import {Input} from '../../components/input/input';
 import {
@@ -10,9 +10,9 @@ import {
   validatePasswordRepeat, validatePhone,
 } from '../../services/validation/validators';
 import {getComponentByName} from '../../utils/getComponentByName';
-import {navigate} from "../../services/router/router";
+import AuthController from "../../controllers/AuthController";
 
-interface RegisterPageProps extends BlockOwnProps {
+interface SignupPageProps extends BlockOwnProps {
   passwordValidator: (value: string) => string;
   emailValidator: (value: string) => string;
   loginValidator: (value: string) => string;
@@ -21,8 +21,8 @@ interface RegisterPageProps extends BlockOwnProps {
   passwordRepeatValidator: (value: string) => string;
 }
 
-export class RegisterPage extends Block<RegisterPageProps> {
-  static componentName = 'RegisterPage';
+export class SignupPage extends Block<SignupPageProps> {
+  static componentName = 'SignupPage';
   protected template = template;
 
   constructor() {
@@ -65,7 +65,6 @@ export class RegisterPage extends Block<RegisterPageProps> {
   protected events = {
     submit: (event: Event) => {
       event.preventDefault();
-
       const emailInput = getComponentByName(this.children, Input, 'email');
       const loginInput = getComponentByName(this.children, Input, 'login');
       const firstNameInput = getComponentByName(this.children, Input, 'first_name');
@@ -108,17 +107,14 @@ export class RegisterPage extends Block<RegisterPageProps> {
         return;
       }
 
-      console.log({
+      void AuthController.signup({
         email: emailInput.getValue(),
         login: loginInput.getValue(),
         first_name: firstNameInput.getValue(),
         second_name: secondNameInput.getValue(),
         phone: phoneInput.getValue(),
         password: passwordInput.getValue(),
-        password_repeat: passwordRepeatInput.getValue(),
       });
-
-      navigate('/')
     },
   };
 

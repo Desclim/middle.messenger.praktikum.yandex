@@ -1,7 +1,7 @@
-import Block from '../../core/Block';
+import Block from '../../core/Component/Block';
 import template from './search.hbs?raw';
 import './search.scss';
-import type {BlockOwnProps} from '../../core/Block';
+import type {BlockOwnProps} from '../../core/Component/Block';
 
 interface SearchProps extends BlockOwnProps {
   name: string;
