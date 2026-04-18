@@ -9,8 +9,6 @@ const METHODS = {
 
 type MethodsType = typeof METHODS[keyof typeof METHODS];
 
-
-
 type RequestOptions = {
   headers?: Record<string, string>;
   method?: MethodsType;
