@@ -39,12 +39,11 @@ class SettingsPageBase extends Block<SettingsPageProps> {
   protected events = {
     click: (event: Event) => {
       const target = event.target;
-
       if (!(target instanceof HTMLElement)) {
         return;
       }
 
-      const logoutButton = target.closest('.profile__logout');
+      const logoutButton = target.closest('.settings__logout');
 
       if (!(logoutButton instanceof HTMLButtonElement)) {
         return;
