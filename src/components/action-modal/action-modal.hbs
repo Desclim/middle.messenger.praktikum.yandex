@@ -1,0 +1,24 @@
+<div class="modal-overlay {{#unless isOpen}}modal-overlay__hidden{{/unless}}">
+  <div class="action-modal">
+    <h2 class="action-modal__title">{{title}}</h2>
+
+    <form class="action-modal__form">
+      {{#if inputId}}
+        {{{ Input
+          id=inputId
+          name=inputName
+          type="text"
+          label=inputLabel
+          value=""
+          autocomplete="off"
+          ref="modalInput"
+        }}}
+      {{/if}}
+
+      {{{Button
+        label=buttonText
+        type="submit"
+      }}}
+    </form>
+  </div>
+</div>

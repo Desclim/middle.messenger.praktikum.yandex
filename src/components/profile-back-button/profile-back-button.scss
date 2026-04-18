@@ -1,11 +1,9 @@
-@use "../../styles/mixins" as *;
-
 .profile-back-button{
   @include flex-center;
 
   width: 64px;
-  background: #fbfbfb;
-  border-right: 1px solid #EAEAEA;
+  background: $color-bg-page;
+  border-right: 1px solid $color-border;
   height: 100%;
 
   &__back {
@@ -13,7 +11,7 @@
 
     width: 28px;
     height: 28px;
-    background: #3369f3;
+    background: $color-primary;
     border-radius: 50%;
   }
 }

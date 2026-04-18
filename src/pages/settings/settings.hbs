@@ -1,0 +1,64 @@
+<main class="settings">
+  <div class="settings__sidebar">
+    {{{ ProfileBackButton href="/messenger" ref="profileBackButton" }}}
+  </div>
+
+  <section class="settings__content">
+
+    <header class="settings__header">
+      {{{ ProfileAvatar
+        avatar=avatar
+        display_name=display_name
+        showDisplayName=true
+        ref="profileAvatar"
+      }}}
+    </header>
+
+    <ul class="settings__info">
+      <li class="settings__row">
+        <span class="settings__label">Почта</span>
+        <span class="settings__value">{{email}}</span>
+      </li>
+
+      <li class="settings__row">
+        <span class="settings__label">Логин</span>
+        <span class="settings__value">{{login}}</span>
+      </li>
+
+      <li class="settings__row">
+        <span class="settings__label">Имя</span>
+        <span class="settings__value">{{first_name}}</span>
+      </li>
+
+      <li class="settings__row">
+        <span class="settings__label">Фамилия</span>
+        <span class="settings__value">{{second_name}}</span>
+      </li>
+
+      <li class="settings__row">
+        <span class="settings__label">Имя в чате</span>
+        <span class="settings__value">{{display_name}}</span>
+      </li>
+
+      <li class="settings__row">
+        <span class="settings__label">Телефон</span>
+        <span class="settings__value">{{phone}}</span>
+      </li>
+    </ul>
+
+    <nav class="settings__actions">
+      <a href="/edit-profile" class="settings__action" data-link>
+        Изменить данные
+      </a>
+
+      <a href="/edit-password" class="settings__action" data-link>
+        Изменить пароль
+      </a>
+
+      <button class="settings__logout" type="button">
+        Выйти
+      </button>
+    </nav>
+
+  </section>
+</main>

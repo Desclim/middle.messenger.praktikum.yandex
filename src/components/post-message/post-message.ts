@@ -1,4 +1,4 @@
-import Block, {type BlockOwnProps} from '../../core/Block';
+import Block, {type BlockOwnProps} from '../../core/Component/Block';
 import template from './post-message.hbs?raw';
 import './post-message.scss';
 import {validateDefault} from "../../services/validation/validators";
