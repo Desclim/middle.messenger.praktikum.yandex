@@ -15,9 +15,8 @@
 .action-modal {
   width: 340px;
   min-height: 257px;
-  box-sizing: border-box;
   padding: 40px 30px;
-  background: #fff;
+  background: $color-text-inverse;
   border-radius: 12px;
 
   &__title {
@@ -32,6 +31,6 @@
   &__form {
     display: flex;
     flex-direction: column;
-    gap: 45px;
+    gap: 30px;
   }
 }
