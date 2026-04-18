@@ -1,5 +1,6 @@
 .error {
   @include flex-center;
+
   min-height: 100dvh;
 
   &__container {
@@ -10,6 +11,7 @@
 
   &__content {
     @include flex-center;
+
     flex-direction: column;
     gap: 20px;
   }

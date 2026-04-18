@@ -10,9 +10,10 @@
   }
 
   &__placeholder {
+    @include flex-center;
+
     height: 100%;
     width: 100%;
-    @include flex-center;
     font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
