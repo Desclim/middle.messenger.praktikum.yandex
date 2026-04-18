@@ -1,0 +1,64 @@
+
+
+
+.context-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  &__trigger {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    color: $color-text-main;
+  }
+
+  &__trigger:hover {
+    background: $color-bg2-page;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 20;
+    padding: 7px 0;
+    min-width: 210px;
+    border-radius: 12px;
+    background: #FFF;
+    box-shadow: 0 8px 20px rgb(0 0 0 / 10%);
+    border: 1px solid $color-border;
+  }
+
+  &__dropdown_hidden {
+    display: none;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    padding: 7px 14px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 14px;
+    color: $color-text-main;
+  }
+
+  &__icon {
+    @include flex-center;
+  }
+
+  &__item:hover {
+    background: $color-bg2-page;
+  }
+}

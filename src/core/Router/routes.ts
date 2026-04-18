@@ -2,7 +2,7 @@ export const APP_ROUTES = {
   LOGIN: '/',
   SIGN_UP: '/sign-up',
   MESSENGER: '/messenger',
-  PROFILE: '/profile',
+  SETTINGS: '/settings',
   EDIT_PROFILE: '/edit-profile',
   EDIT_PASSWORD: '/edit-password',
   NOT_FOUND: '/404',

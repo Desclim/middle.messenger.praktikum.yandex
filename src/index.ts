@@ -6,7 +6,7 @@ import {NotFoundPage} from "./pages/not-found/not-found";
 import {ErrorPage} from "./pages/error/error";
 import {SignupPage} from "./pages/sign-up/sign-up";
 import {MessengerPage} from "./pages/messenger/messenger";
-import {ProfilePage} from "./pages/profile/profile";
+import {SettingsPage} from "./pages/settings/settings";
 import {EditProfilePage} from "./pages/edit-profile/edit-profile";
 import {EditPasswordPage} from "./pages/edit-password/edit-password";
 import {navigate} from "./core/Router/navigate";
@@ -45,7 +45,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use('/500', ErrorPage)
     .use('/sign-up', SignupPage)
     .use('/messenger', MessengerPage)
-    .use('/profile', ProfilePage)
+    .use('/settings', SettingsPage)
     .use('/edit-profile', EditProfilePage)
     .use('/edit-password', EditPasswordPage)
     .start();

@@ -11,25 +11,29 @@
         <span class="chat-content__title">{{selectedChat.title}}</span>
       </div>
 
-      <button class="chat-content__menu" type="button">
-        ⋮
-      </button>
+      {{{ ContextMenu
+        text="⋮"
+        ref="chatMenu"
+        items=menuItems
+      }}}
     </header>
 
     <div class="chat-content__messages">
-      {{#each selectedChat.messages}}
-        <div class="chat-message {{#if isMine}}chat-message_mine{{else}}chat-message_theirs{{/if}}">
-          {{#if content}}
-            <div class="chat-message__bubble">
-              <p class="chat-message__text">{{content}}</p>
-              <span class="chat-message__time">{{time}}</span>
-            </div>
-          {{/if}}
-        </div>
-      {{/each}}
+
     </div>
 
     {{{ PostMessage name="message" ref="postMessage" }}}
+
+    {{{ ActionModal
+      isOpen=isUserActionModalOpen
+      title=userActionTitle
+      buttonText=userActionButtonText
+      inputId="user-login"
+      inputName="login"
+      inputLabel="Логин"
+      onClose=closeUserActionModal
+      onSubmit=submitUserActionModal
+    }}}
   {{else}}
     <div class="chat-content__placeholder">
       Выберите чат чтобы отправить сообщение

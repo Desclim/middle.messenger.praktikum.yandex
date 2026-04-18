@@ -20,7 +20,7 @@ type RequestOptions = {
 };
 
 function queryStringify(data: objectType): string {
-  const entries = Object.entries(data).filter(([_, value]) => value !== undefined && value !== null);
+  const entries = Object.entries(data).filter(([, value]) => value !== undefined && value !== null);
 
   if (entries.length === 0) {
     return '';

@@ -26,11 +26,7 @@ export default class Route {
       return
     }
 
-    const content = this._block.element();
-    if (content) {
-      content.remove();
-    }
-
+    this._block.destroy();
     this._block = null;
   }
 

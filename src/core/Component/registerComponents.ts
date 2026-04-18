@@ -8,6 +8,8 @@ import {PostMessage} from "../../components/post-message/post-message";
 import {MessengerContent} from "../../blocks/messenger-content/messenger-content";
 import {ProfileBackButton} from "../../components/profile-back-button/profile-back-button";
 import {ProfileAvatar} from "../../components/profile-avatar/profile-avatar";
+import {ContextMenu} from "../../components/context-menu/context-menu";
+import {ActionModal} from "../../components/action-modal/action-modal";
 
 export function registryComponents(): void {
   registerComponent(Button);
@@ -19,4 +21,7 @@ export function registryComponents(): void {
   registerComponent(MessengerContent);
   registerComponent(ProfileBackButton);
   registerComponent(ProfileAvatar);
+  registerComponent(ContextMenu);
+  registerComponent(ActionModal);
 }
+

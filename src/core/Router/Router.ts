@@ -1,9 +1,10 @@
 import Route from './Route';
 import Block from '../Component/Block';
+import type {BlockOwnProps} from '../Component/Block';
 import store from '../Store/Store';
 import { APP_ROUTES, type AppPathname } from './routes';
 
-type BlockConstructable = new () => Block;
+type BlockConstructable = new (props?: BlockOwnProps) => Block;
 
 const noAuthRoutes: AppPathname[] = [
   APP_ROUTES.LOGIN,
@@ -12,7 +13,7 @@ const noAuthRoutes: AppPathname[] = [
 
 const authRoutes: AppPathname[] = [
   APP_ROUTES.MESSENGER,
-  APP_ROUTES.PROFILE,
+  APP_ROUTES.SETTINGS,
   APP_ROUTES.EDIT_PROFILE,
   APP_ROUTES.EDIT_PASSWORD,
 ];

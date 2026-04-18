@@ -1,8 +1,8 @@
 <button
         class="button"
-        data-button="{{name}}"
+        name="{{name}}"
         type="{{type}}"
-        form="{{form}}"
+        {{#if form}}form="{{form}}"{{/if}}
 >
   <span class="button__text">
       {{label}}

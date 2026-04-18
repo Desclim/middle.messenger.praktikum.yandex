@@ -3,7 +3,6 @@ import template from './edit-password.hbs?raw';
 import './edit-password.scss';
 
 import {Input} from '../../components/input/input';
-import {mockProfile} from '../../mocks/mockProfile';
 import {
   validateDefault,
   validatePassword,
@@ -12,22 +11,30 @@ import {
 import {getComponentByName} from '../../utils/getComponentByName';
 import {navigate} from "../../core/Router/navigate";
 import {APP_ROUTES} from "../../core/Router/routes";
+import UsersController from "../../controllers/UsersController";
+import type {objectType} from "../../types/objectType";
+import type {User} from "../../types/user";
+import {getAvatarUrl} from "../../utils/getAvatarUrl";
+import {connect} from "../../core/Component/connect";
 
 interface EditPasswordPageProps extends BlockOwnProps {
-  displayName: string;
-  newPasswordRepeatValidator: (value: string) => string;
-  newPasswordValidator: (value: string) => string;
+  display_name: string;
+  avatar: string;
+  newPasswordRepeatValidator?: (value: string) => string;
+  newPasswordValidator?: (value: string) => string;
 }
 
-export class EditPasswordPage extends Block<EditPasswordPageProps> {
+class EditPasswordPageBase extends Block<EditPasswordPageProps> {
   static componentName = 'EditPasswordPage';
   protected template = template;
 
-  constructor() {
+  constructor(props?: Partial<EditPasswordPageProps>) {
     super({
-      displayName: mockProfile.displayName,
+      display_name: '',
+      avatar: '',
       newPasswordValidator: validatePassword,
       newPasswordRepeatValidator: validateDefault,
+      ...props
     });
   }
 
@@ -58,7 +65,7 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
   }
 
   protected events = {
-    submit: (event: Event) => {
+    submit: async (event: Event) => {
       event.preventDefault();
 
       const oldPasswordInput = getComponentByName(this.children, Input, 'old_password');
@@ -83,13 +90,12 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
         return;
       }
 
-      console.log({
+      await UsersController.updatePassword({
         oldPassword: oldPasswordInput.getValue(),
         newPassword: passwordInput.getValue(),
-        newPasswordRepeat: passwordRepeatInput.getValue(),
       });
 
-      navigate(APP_ROUTES.PROFILE);
+      navigate(APP_ROUTES.SETTINGS);
     },
   };
 
@@ -135,3 +141,14 @@ export class EditPasswordPage extends Block<EditPasswordPageProps> {
     return true;
   }
 }
+
+const mapUserToProps = (state: objectType) => {
+  const user = (state.user as Partial<User> | undefined) ?? {};
+
+  return {
+    avatar: getAvatarUrl(user.avatar) ?? '',
+    display_name: user.display_name ?? '',
+  };
+};
+
+export const EditPasswordPage = connect(mapUserToProps)(EditPasswordPageBase);

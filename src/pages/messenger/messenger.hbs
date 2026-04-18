@@ -2,7 +2,7 @@
   <aside class="chats__sidebar">
     <header class="chats__sidebar-header">
       <nav class="sidebar-nav">
-        <a data-link href="/profile" class="sidebar-nav__profile">
+        <a data-link href="/settings" class="sidebar-nav__profile">
           Профиль
           <img
             class="sidebar-nav__arrow"
@@ -13,10 +13,17 @@
       </nav>
 
       {{{ Search
+        id="chat-search"
         name="search"
         ref="search"
         value=""
         placeholder="Поиск"
+      }}}
+
+      {{{ Button
+        name="create-chat"
+        type="button"
+        label="Создать чат"
       }}}
     </header>
 
@@ -38,4 +45,15 @@
   <section class="chats__content">
     {{{ MessengerContent selectedChat=selectedChat }}}
   </section>
+
+  {{{ ActionModal
+    isOpen=isCreateChatModalOpen
+    title="Создать чат"
+    buttonText="Создать"
+    inputId="create-chat-title"
+    inputName="title"
+    inputLabel="Название"
+    onClose=closeCreateChatModal
+    onSubmit=submitCreateChatModal
+  }}}
 </main>

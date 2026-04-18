@@ -1,11 +1,14 @@
 import Block, { type BlockOwnProps } from '../../core/Component/Block';
 import template from './profile-avatar.hbs?raw';
 import './profile-avatar.scss';
+import UsersController from '../../controllers/UsersController';
 
 interface ProfileAvatarProps extends BlockOwnProps {
-  displayName?: string;
+  avatar?: string;
+  display_name?: string;
   showDisplayName?: boolean;
-  ref?:string
+  ref?: string;
+  disabled?: boolean;
 }
 
 export class ProfileAvatar extends Block<ProfileAvatarProps> {
@@ -13,8 +16,21 @@ export class ProfileAvatar extends Block<ProfileAvatarProps> {
 
   protected template = template;
 
+  constructor(props: ProfileAvatarProps) {
+    super({
+      disabled: false,
+      showDisplayName: false,
+      avatar: '',
+      ...props,
+    });
+  }
+
   protected events = {
-    change: (event: Event) => {
+    change: async (event: Event) => {
+      if (this.props.disabled) {
+        return;
+      }
+
       const target = event.target;
 
       if (!(target instanceof HTMLInputElement)) {
@@ -25,8 +41,17 @@ export class ProfileAvatar extends Block<ProfileAvatarProps> {
         return;
       }
 
-      const file = target.files?.[0] ?? null;
-      console.log('Выбранный файл:', file);
+      const file = target.files?.[0];
+
+      if (!file) {
+        return;
+      }
+
+      try {
+        await UsersController.updateAvatar(file);
+      } catch (error) {
+        console.error('Ошибка обновления аватара', error);
+      }
     },
   };
 }

@@ -1,6 +1,6 @@
 import HTTPTransport from "./HTTPTransport";
 
-const BASE_URL = 'https://ya-praktikum.tech/api/v2';
+export const BASE_URL = 'https://ya-praktikum.tech/api/v2';
 
 export abstract class BaseYandexAPI {
   protected http: HTTPTransport

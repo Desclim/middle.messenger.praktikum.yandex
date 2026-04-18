@@ -2,7 +2,7 @@ import {isObject} from "./isObject";
 import type {objectType} from "../types/objectType";
 
 export function merge(lhs: objectType, rhs: objectType): objectType {
-  let result: objectType = {...lhs}
+  const result: objectType = {...lhs}
 
   Object.keys(rhs).forEach((key) => {
     const leftValue = lhs[key]

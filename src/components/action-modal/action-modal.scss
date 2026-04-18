@@ -1,0 +1,37 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(0 0 0 / 40%);
+
+  &__hidden {
+    display: none;
+  }
+}
+
+.action-modal {
+  width: 340px;
+  min-height: 257px;
+  box-sizing: border-box;
+  padding: 40px 30px;
+  background: #fff;
+  border-radius: 12px;
+
+  &__title {
+    margin: 0 0 40px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    color: $color-text-main;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+  }
+}

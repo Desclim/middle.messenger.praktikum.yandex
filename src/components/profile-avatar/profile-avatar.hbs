@@ -1,18 +1,24 @@
 <div class="profile-avatar">
   <div class="profile-avatar__avatar">
-    <img alt="">
-    <input
-      class="profile-avatar__input"
-      type="file"
-      name="avatar"
-      accept="image/*"
-      ref={{ref}}
-    >
+    {{#if avatar}}
+      <img src="{{avatar}}" alt="Аватар пользователя">
+    {{else}}
+      <img alt="">
+    {{/if}}
+    {{#unless disabled}}
+      <input
+        class="profile-avatar__input"
+        type="file"
+        name="avatar"
+        accept="image/*"
+        ref={{ref}}
+      >
+    {{/unless}}
   </div>
 
   {{#if showDisplayName}}
     <h2 class="profile-avatar__name">
-      {{displayName}}
+      {{display_name}}
     </h2>
   {{/if}}
 </div>

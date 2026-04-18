@@ -15,7 +15,7 @@ export type EventListType = Partial<
 export default abstract class Block<
   Props extends BlockOwnProps = BlockOwnProps
 > {
-  protected abstract template: string;
+  protected template = '';
 
   protected props = {} as Props;
 
@@ -26,6 +26,8 @@ export default abstract class Block<
   protected refs: Record<string, Element> = {};
 
   protected events: EventListType = {};
+
+  private isMounted = false;
 
   constructor(props: Props = {} as Props) {
     this.props = props;
@@ -50,33 +52,27 @@ export default abstract class Block<
     this.render();
   }
 
+  public destroy(): void {
+    [...this.children].reverse().forEach((child) => {
+      child.destroy();
+    });
+
+    this.componentWillUnmount();
+    this.removeListeners();
+    this.domElement?.remove();
+    this.domElement = null;
+    this.isMounted = false;
+  }
+
   protected componentDidMount(): void {
   }
 
   protected componentWillUnmount(): void {
   }
 
-  private mountComponent(): void {
-    this.attachListeners();
-    this.componentDidMount();
-  }
-
-  private unmountComponent(): void {
-    if (!this.domElement) {
-      return;
-    }
-
-    [...this.children].reverse().forEach((child) => {
-      child.unmountComponent();
-    });
-
-    this.componentWillUnmount();
-    this.removeListeners();
-  }
-
   private attachListeners(): void {
     for (const eventName in this.events) {
-      const eventCallback:EventListener = this.events[eventName as keyof HTMLElementEventMap] as EventListener;
+      const eventCallback = this.events[eventName as keyof HTMLElementEventMap] as EventListener;
 
       if (typeof eventCallback === 'function' && this.domElement) {
         this.domElement.addEventListener(eventName, eventCallback);
@@ -86,7 +82,7 @@ export default abstract class Block<
 
   private removeListeners(): void {
     for (const eventName in this.events) {
-      const eventCallback:EventListener = this.events[eventName as keyof HTMLElementEventMap] as EventListener;
+      const eventCallback = this.events[eventName as keyof HTMLElementEventMap] as EventListener;
 
       if (typeof eventCallback === 'function' && this.domElement) {
         this.domElement.removeEventListener(eventName, eventCallback);
@@ -95,7 +91,11 @@ export default abstract class Block<
   }
 
   protected render(): void {
-    this.unmountComponent();
+    const isFirstRender = !this.domElement;
+
+    if (!isFirstRender) {
+      this.removeListeners();
+    }
 
     const fragment = this.compile();
 
@@ -104,7 +104,12 @@ export default abstract class Block<
     }
 
     this.domElement = fragment;
-    this.mountComponent();
+    this.attachListeners();
+
+    if (isFirstRender && !this.isMounted) {
+      this.isMounted = true;
+      this.componentDidMount();
+    }
   }
 
   private compile(): Element | null {

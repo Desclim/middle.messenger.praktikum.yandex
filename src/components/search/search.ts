@@ -4,6 +4,7 @@ import './search.scss';
 import type {BlockOwnProps} from '../../core/Component/Block';
 
 interface SearchProps extends BlockOwnProps {
+  id?: string;
   name: string;
   ref: string;
   value?: string;
