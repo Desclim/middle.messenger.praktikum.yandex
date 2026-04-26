@@ -1,0 +1,42 @@
+<section class="chat-content" ref="chat-content">
+  {{#if selectedChat}}
+    <header class="chat-content__header">
+      <div class="chat-content__user">
+        <div class="chat-content__avatar">
+          {{#if selectedChat.avatar}}
+            <img src="{{selectedChat.avatar}}" alt="{{selectedChat.title}}" />
+          {{/if}}
+        </div>
+
+        <span class="chat-content__title">{{selectedChat.title}}</span>
+      </div>
+
+      {{{ ContextMenu
+        text="⋮"
+        ref="chatMenu"
+        items=menuItems
+      }}}
+    </header>
+
+    <div class="chat-content__messages">
+
+    </div>
+
+    {{{ PostMessage name="message" ref="postMessage" }}}
+
+    {{{ ActionModal
+      isOpen=isUserActionModalOpen
+      title=userActionTitle
+      buttonText=userActionButtonText
+      inputId="user-login"
+      inputName="login"
+      inputLabel="Логин"
+      onClose=closeUserActionModal
+      onSubmit=submitUserActionModal
+    }}}
+  {{else}}
+    <div class="chat-content__placeholder">
+      Выберите чат чтобы отправить сообщение
+    </div>
+  {{/if}}
+</section>

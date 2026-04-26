@@ -1,15 +1,15 @@
-import Block, { type BlockOwnProps } from '../../core/Block';
+import Block, { type BlockOwnProps } from '../../core/Component/Block';
 import template from './chat-item.hbs?raw';
 import './chat-item.scss';
 
 interface ChatItemProps extends BlockOwnProps {
-  id: string;
+  id: number;
   title: string;
   message: string;
   time: string;
   active?: boolean;
   unread?: number;
-  avatar?: string;
+  avatar?: string | null;
   onClick?: (chatId: string) => void;
 }
 

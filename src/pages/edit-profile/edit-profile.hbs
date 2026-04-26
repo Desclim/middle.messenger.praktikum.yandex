@@ -1,14 +1,16 @@
 <main class="edit-profile">
   <div class="edit-profile__sidebar">
-    {{{ ProfileBackButton href="/profile" ref="profileBackButton" }}}
+    {{{ ProfileBackButton href="/settings" ref="profileBackButton" }}}
   </div>
 
   <section class="edit-profile__content">
     <header class="edit-profile__header">
       {{{ ProfileAvatar
-        displayName=displayName
+        avatar=avatar
+        display_name=display_name
         showDisplayName=false
         ref="profileAvatar"
+        disabled=true
       }}}
     </header>
 
@@ -40,21 +42,33 @@
         name="first_name"
         type="text"
         label="Имя"
-        value=firstName
+        value=first_name
         autocomplete="given-name"
         ref="first_name"
         validator=nameValidator
       }}}
+
+
 
       {{{ Input
         id="second_name"
         name="second_name"
         type="text"
         label="Фамилия"
-        value=secondName
+        value=second_name
         autocomplete="family-name"
         ref="second_name"
         validator=nameValidator
+      }}}
+
+      {{{ Input
+        id="display_name"
+        name="display_name"
+        type="text"
+        label="Имя в чате"
+        value=display_name
+        autocomplete="off"
+        ref="display_name"
       }}}
 
       {{{ Input

@@ -1,6 +1,3 @@
-@use "../../styles/mixins" as *;
-@use '../../styles/variables' as *;
-
 .profile-avatar {
   @include flex-center;
 
@@ -13,6 +10,14 @@
     height: 130px;
     border-radius: 50%;
     background: #EFEFEF;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
   }
 
   &__input {
