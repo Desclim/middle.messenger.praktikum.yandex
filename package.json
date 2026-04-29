@@ -11,15 +11,22 @@
     "lint:ts": "eslint .",
     "lint:styles": "stylelint \"src/**/*.{css,scss}\"",
     "lint:styles:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
-    "lint": "npm run lint:ts && npm run lint:styles"
+    "lint": "npm run lint:ts && npm run lint:styles",
+    "test": "mocha"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.6.0",
+    "chai": "^6.2.2",
     "eslint": "^10.1.0",
     "globals": "^17.4.0",
+    "mocha": "^11.7.5",
     "sass": "^1.97.3",
     "stylelint": "^17.5.0",
     "stylelint-config-standard-scss": "^17.0.0",
+    "tsx": "^4.21.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.57.1",
     "vite": "^7.3.1"

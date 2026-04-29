@@ -10,6 +10,7 @@ import {ProfileBackButton} from "../../components/profile-back-button/profile-ba
 import {ProfileAvatar} from "../../components/profile-avatar/profile-avatar";
 import {ContextMenu} from "../../components/context-menu/context-menu";
 import {ActionModal} from "../../components/action-modal/action-modal";
+import {Message} from "../../components/message/message";
 
 export function registryComponents(): void {
   registerComponent(Button);
@@ -23,5 +24,6 @@ export function registryComponents(): void {
   registerComponent(ProfileAvatar);
   registerComponent(ContextMenu);
   registerComponent(ActionModal);
+  registerComponent(Message);
 }
 

@@ -8,6 +8,9 @@ import {connect} from '../../core/Component/connect';
 import type {objectType} from '../../types/objectType';
 import store from '../../core/Store/Store';
 import type {ChatUI} from "../../types/chats";
+import type {MessageGroup} from "../../types/messages";
+import MessagesController from "../../controllers/MessagesController";
+import {getMessageGroupsBySelectedChat} from "../../utils/getMessageGroupsBySelectedChat";
 
 interface MessengerPageProps extends BlockOwnProps {
   chats?: ChatUI[];
@@ -15,6 +18,7 @@ interface MessengerPageProps extends BlockOwnProps {
   isCreateChatModalOpen?: boolean;
   closeCreateChatModal?: () => void;
   submitCreateChatModal?: (title: string) => Promise<void>;
+  messageGroups?: MessageGroup[];
 }
 
 class MessengerPageBase extends Block<MessengerPageProps> {
@@ -43,6 +47,10 @@ class MessengerPageBase extends Block<MessengerPageProps> {
 
   protected async componentDidMount(): Promise<void> {
     await ChatsController.getChats();
+  }
+
+  protected async componentWillUnmount(): Promise<void> {
+    MessagesController.closeAll()
   }
 
   protected events = {
@@ -75,7 +83,20 @@ class MessengerPageBase extends Block<MessengerPageProps> {
         return;
       }
 
-      store.setState('selectedChatId', Number(chatId));
+      const selectedChatId = Number(chatId);
+
+      store.setState('selectedChatId', selectedChatId);
+
+      const storeChats: ChatUI[] = store.getState().chats as ChatUI[]
+      const readCurrentChat = storeChats.map(chat => {
+        if (chat.id === selectedChatId) {
+          return {...chat, unread: 0}
+        }
+        return {...chat}
+      })
+      store.setState('chats', readCurrentChat);
+
+      void MessagesController.connect(selectedChatId);
     },
 
     input: (event: Event) => {
@@ -112,6 +133,7 @@ const mapStateToProps = (state: objectType): Partial<MessengerPageProps> => {
   return {
     chats,
     selectedChat,
+    messageGroups: getMessageGroupsBySelectedChat(state),
     isCreateChatModalOpen: false,
   };
 };

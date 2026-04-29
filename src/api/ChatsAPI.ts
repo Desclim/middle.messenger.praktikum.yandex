@@ -1,5 +1,5 @@
 import {BaseYandexAPI} from "../core/HTTP/BaseAPI";
-import type {ChatUsersRequest, CreateChatRequest} from "../types/chats";
+import type {ChatToken, ChatUsersRequest, CreateChatRequest} from "../types/chats";
 import type {ChatData} from "../types/chats";
 
 class ChatsAPI extends BaseYandexAPI {
@@ -17,6 +17,10 @@ class ChatsAPI extends BaseYandexAPI {
 
   public removeUsers(data: ChatUsersRequest): Promise<void> {
     return this.http.delete(`${this.endpoint}/chats/users`, {data});
+  }
+
+  public getToken(chatId: number): Promise<ChatToken> {
+    return this.http.post(`${this.endpoint}/chats/token/${chatId}`);
   }
 }
 

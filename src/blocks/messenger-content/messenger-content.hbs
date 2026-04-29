@@ -19,10 +19,21 @@
     </header>
 
     <div class="chat-content__messages">
+      {{#each messageGroups}}
+        <div class="chat-content__date">
+          {{date}}
+        </div>
 
+        {{#each messages}}
+          {{{ Message
+            content=content
+            time=time
+            isMine=isMine
+          }}}
+        {{/each}}
+      {{/each}}
     </div>
-
-    {{{ PostMessage name="message" ref="postMessage" }}}
+    {{{ PostMessage name="message" ref="message" }}}
 
     {{{ ActionModal
       isOpen=isUserActionModalOpen
