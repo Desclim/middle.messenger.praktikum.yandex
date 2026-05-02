@@ -40,6 +40,10 @@
     "@fontsource/inter": "^5.2.8",
     "handlebars": "^4.7.8"
   },
+  "overrides": {
+    "serialize-javascript": "7.0.5",
+    "diff": "8.0.3"
+  },
   "engines": {
     "node": ">=22"
   }
