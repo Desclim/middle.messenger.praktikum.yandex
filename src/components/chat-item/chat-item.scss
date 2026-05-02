@@ -53,7 +53,6 @@
     font-size: 13px;
     line-height: 13px;
     color: $color-text-main;
-
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -61,7 +60,6 @@
 
   &__time {
     white-space: nowrap;
-
     font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -74,25 +72,22 @@
     height: 100%;
     display: flex;
     justify-content: space-between;
-
   }
 
   &__message {
     min-width: 0;
     max-width: 100%;
-
     font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
     color: $color-text-secondary;
-
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   &__counterContainer {

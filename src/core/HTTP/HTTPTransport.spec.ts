@@ -1,4 +1,4 @@
-import { expect } from 'chai';
+import {expect} from 'chai';
 import HTTPTransport from './HTTPTransport';
 
 type RequestBody = Document | XMLHttpRequestBodyInit | null | undefined;
@@ -98,11 +98,11 @@ describe('HTTPTransport', () => {
 
       const request = getRequest();
 
-      request.respond(200, { 'Content-Type': 'application/json' }, '{"ok":true}');
+      request.respond(200, {'Content-Type': 'application/json'}, '{"ok":true}');
 
       expect(request.method).to.equal('GET');
       expect(request.url).to.equal('/api/chats?limit=10&offset=0');
-      expect(await responsePromise).to.deep.equal({ ok: true });
+      expect(await responsePromise).to.deep.equal({ok: true});
     });
 
     it('включает отправку cookie', async () => {
@@ -112,10 +112,10 @@ describe('HTTPTransport', () => {
 
       const request = getRequest();
 
-      request.respond(200, { 'Content-Type': 'application/json' }, '{"id":1}');
+      request.respond(200, {'Content-Type': 'application/json'}, '{"id":1}');
 
       expect(request.withCredentials).to.equal(true);
-      expect(await responsePromise).to.deep.equal({ id: 1 });
+      expect(await responsePromise).to.deep.equal({id: 1});
     });
   });
 
@@ -125,13 +125,13 @@ describe('HTTPTransport', () => {
 
       const responsePromise = transport.post<string>('/api/chats', {
         data: {
-          title: 'new chat',
+          title: 'new chat'
         },
       });
 
       const request = getRequest();
 
-      request.respond(201, { 'Content-Type': 'text/plain' }, 'created');
+      request.respond(201, {'Content-Type': 'text/plain'}, 'created');
 
       expect(request.method).to.equal('POST');
       expect(request.sentData).to.equal('{"title":"new chat"}');
@@ -142,15 +142,17 @@ describe('HTTPTransport', () => {
       const transport = new HTTPTransport();
 
       const responsePromise = transport.post<{ ok: boolean }>('/api/chats', {
-        data: {title: 'new chat'},
+        data: {
+          title: 'new chat'
+        },
       });
 
       const request = getRequest();
 
-      request.respond(200, { 'Content-Type': 'application/json' }, '{"ok":true}');
+      request.respond(200, {'Content-Type': 'application/json'}, '{"ok":true}');
 
       expect(request.requestHeaders['Content-Type']).to.equal('application/json');
-      expect(await responsePromise).to.deep.equal({ ok: true });
+      expect(await responsePromise).to.deep.equal({ok: true});
     });
 
     it('не перезаписывает переданный Content-Type', async () => {
@@ -167,7 +169,7 @@ describe('HTTPTransport', () => {
 
       const request = getRequest();
 
-      request.respond(200, { 'Content-Type': 'text/plain' }, 'ok');
+      request.respond(200, {'Content-Type': 'text/plain'}, 'ok');
 
       expect(request.requestHeaders['Content-Type']).to.equal('text/plain');
       expect(await responsePromise).to.equal('ok');
@@ -182,9 +184,9 @@ describe('HTTPTransport', () => {
 
       const request = getRequest();
 
-      request.respond(200, { 'Content-Type': 'application/json' }, '{"id":123}');
+      request.respond(200, {'Content-Type': 'application/json'}, '{"id":123}');
 
-      expect(await responsePromise).to.deep.equal({ id: 123 });
+      expect(await responsePromise).to.deep.equal({id: 123});
     });
 
     it('возвращает строку при текстовом ответе', async () => {
@@ -194,7 +196,7 @@ describe('HTTPTransport', () => {
 
       const request = getRequest();
 
-      request.respond(200, { 'Content-Type': 'text/plain' }, 'ok');
+      request.respond(200, {'Content-Type': 'text/plain'}, 'ok');
 
       expect(await responsePromise).to.equal('ok');
     });
@@ -207,7 +209,7 @@ describe('HTTPTransport', () => {
       const request = getRequest();
 
       request.statusText = 'Internal Server Error';
-      request.respond(500, { 'Content-Type': 'text/plain' }, 'fail');
+      request.respond(500, {'Content-Type': 'text/plain'}, 'fail');
 
       try {
         await responsePromise;

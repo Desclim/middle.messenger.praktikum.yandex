@@ -117,7 +117,19 @@ class MessagesController {
 
   private handleOpen = (): void => {
     this.startPing();
-    this.getOldMessages();
+
+    if (!this.currentChatId) {
+      return;
+    }
+
+    const messagesByChatId =
+      (store.getState().messagesByChatId as MessagesByChatId | undefined) ?? {};
+
+    const hasLoadedMessages = Boolean(messagesByChatId[this.currentChatId]?.length);
+
+    if (!hasLoadedMessages) {
+      this.getOldMessages();
+    }
   };
 
   private handleMessage = (event: MessageEvent): void => {
@@ -129,7 +141,7 @@ class MessagesController {
       const data = JSON.parse(event.data) as | ChatMessage | ChatMessage[] | ServiceMessage;
 
       if (Array.isArray(data)) {
-        this.addMessages(this.currentChatId, data.reverse());
+        this.addMessages(this.currentChatId, [...data].reverse());
         return;
       }
 

@@ -1,0 +1,2 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://ya-praktikum.tech; connect-src 'self' https://ya-praktikum.tech wss://ya-praktikum.tech; font-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'none';

@@ -27,7 +27,6 @@ interface ChatContentProps extends BlockOwnProps {
 export class MessengerContent extends Block<ChatContentProps> {
   static componentName = 'MessengerContent';
   protected template = template;
-
   constructor(props: ChatContentProps) {
     super({
       ...props,

@@ -2,6 +2,7 @@ import type {objectType} from '../types/objectType';
 import type {ChatMessageUI, MessageGroup, MessagesByChatId} from '../types/messages';
 import type {User} from '../types/user';
 import {formatMessageDate, formatMessageTime, getMessageDateKey} from '../services/formats/formatMessage';
+import {sanitizeUserContent} from "./sanitaizeFunctions";
 
 export function getMessageGroupsBySelectedChat(state: objectType): MessageGroup[] {
   const selectedChatId = state.selectedChatId as number | undefined;
@@ -41,6 +42,7 @@ export function getMessageGroupsBySelectedChat(state: objectType): MessageGroup[
 
     const messageUI: ChatMessageUI = {
       ...message,
+      content:sanitizeUserContent(message.content),
       time: formatMessageTime(message.time),
       isMine: Number(message.user_id) === user?.id,
     };

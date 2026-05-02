@@ -36,15 +36,14 @@
 
   &__content {
     max-width: 100%;
-    font-family: 'Inter', sans-serif;
+    font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
     line-height: 15px;
     color: $color-text-main;
     white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   &__time {
