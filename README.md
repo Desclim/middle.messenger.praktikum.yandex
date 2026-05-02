@@ -101,4 +101,4 @@ UI брался с готового шаблона яндекса :
 https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1
 
 netlify :
-https://69f5b56e310f940008b801d5--thriving-taffy-369ce1.netlify.app/messenger
+https://69f5eef605d6670008e66d70--thriving-taffy-369ce1.netlify.app/messenger
