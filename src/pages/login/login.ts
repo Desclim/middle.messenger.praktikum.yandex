@@ -6,6 +6,7 @@ import {Input} from '../../components/input/input';
 import {validateLogin, validatePassword} from '../../services/validation/validators';
 import {getComponentByName} from "../../utils/getComponentByName";
 import AuthController from "../../controllers/AuthController";
+import {sanitizeUserContent} from "../../utils/sanitaizeFunctions";
 
 interface LoginPageProps extends BlockOwnProps {
   loginValidator: (value: string) => string;
@@ -41,8 +42,8 @@ export class LoginPage extends Block<LoginPageProps> {
       }
 
       void AuthController.signin({
-        login: loginInput.getValue(),
-        password: passwordInput.getValue(),
+        login: sanitizeUserContent(loginInput.getValue()),
+        password: sanitizeUserContent(passwordInput.getValue()),
       })
     },
   };
