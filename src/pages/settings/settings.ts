@@ -7,6 +7,7 @@ import type {objectType} from "../../types/objectType";
 import type {User} from "../../types/user";
 import {getAvatarUrl} from "../../utils/getAvatarUrl";
 import {formatPhone} from "../../services/formats/formatPhone";
+import {sanitizeUserContent} from "../../utils/sanitaizeFunctions";
 
 interface SettingsPageProps extends BlockOwnProps {
   email: string;
@@ -57,13 +58,13 @@ class SettingsPageBase extends Block<SettingsPageProps> {
 const mapUserToProps = (state: objectType) => {
   const user = (state.user as Partial<User> | undefined) ?? {};
   return {
-    email: user.email ?? '',
-    login: user.login ?? '',
-    first_name: user.first_name ?? '',
-    second_name: user.second_name ?? '',
-    display_name: user.display_name ?? '',
-    phone: user.phone ? formatPhone(user.phone) : '',
-    avatar: getAvatarUrl(user.avatar) ?? ''
+    email: sanitizeUserContent(user.email),
+    login: sanitizeUserContent(user.login),
+    first_name: sanitizeUserContent(user.first_name),
+    second_name: sanitizeUserContent(user.second_name),
+    display_name: sanitizeUserContent(user.display_name),
+    phone: sanitizeUserContent(user.phone ? formatPhone(user.phone) : ''),
+    avatar: getAvatarUrl(user.avatar),
   };
 };
 

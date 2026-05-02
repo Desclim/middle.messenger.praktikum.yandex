@@ -7,6 +7,8 @@ import {getComponentByName} from '../../utils/getComponentByName';
 import UsersController from '../../controllers/UsersController';
 import ChatsController from '../../controllers/ChatsController';
 import type {ChatUI} from "../../types/chats";
+import type {MessageGroup} from "../../types/messages";
+import MessagesController from "../../controllers/MessagesController";
 
 type UserActionType = 'add-user' | 'remove-user';
 
@@ -19,12 +21,12 @@ interface ChatContentProps extends BlockOwnProps {
   userActionButtonText: string;
   closeUserActionModal?: () => void;
   submitUserActionModal?: (login: string) => Promise<void>;
+  messageGroups?: MessageGroup[];
 }
 
 export class MessengerContent extends Block<ChatContentProps> {
   static componentName = 'MessengerContent';
   protected template = template;
-
   constructor(props: ChatContentProps) {
     super({
       ...props,
@@ -52,7 +54,6 @@ export class MessengerContent extends Block<ChatContentProps> {
         if (!Array.isArray(users) || users.length === 0) {
           throw new Error('Пользователь не найден');
         }
-
         const userId = users[0].id;
         const chatId = Number(this.props.selectedChat.id);
 
@@ -91,10 +92,10 @@ export class MessengerContent extends Block<ChatContentProps> {
         return;
       }
 
-      console.log({
-        chatId: this.props.selectedChat.id,
-        message: messageInput.getValue(),
-      });
+      MessagesController.sendMessage(
+        this.props.selectedChat.id,
+        messageInput.getValue(),
+      );
 
       messageInput.setValue('');
     },
