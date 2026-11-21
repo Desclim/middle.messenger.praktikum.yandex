@@ -40,3 +40,7 @@ export interface ChatUI {
   time: string;
   active: boolean;
 }
+
+export interface ChatToken {
+  token: string;
+}

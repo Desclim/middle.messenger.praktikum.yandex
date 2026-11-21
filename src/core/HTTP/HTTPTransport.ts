@@ -17,6 +17,8 @@ type RequestOptions = {
   responseType?: XMLHttpRequestResponseType;
 };
 
+type HTTPMethod = <R=unknown>(url: string, options?: Omit<RequestOptions, 'method'>) => Promise<R>
+
 function queryStringify(data: objectType): string {
   const entries = Object.entries(data).filter(([, value]) => value !== undefined && value !== null);
 
@@ -34,21 +36,18 @@ function queryStringify(data: objectType): string {
 }
 
 export default class HTTPTransport {
-  get = <TResponse>(url: string, options: Omit<RequestOptions, 'method'> = {}): Promise<TResponse> => {
-    return this.request<TResponse>(url, { ...options, method: METHODS.GET }, options.timeout);
-  };
-
-  post = <TResponse>(url: string, options: Omit<RequestOptions, 'method'> = {}): Promise<TResponse> => {
-    return this.request<TResponse>(url, { ...options, method: METHODS.POST }, options.timeout);
-  };
-
-  put = <TResponse>(url: string, options: Omit<RequestOptions, 'method'> = {}): Promise<TResponse> => {
-    return this.request<TResponse>(url, { ...options, method: METHODS.PUT }, options.timeout);
-  };
-
-  delete = <TResponse>(url: string, options: Omit<RequestOptions, 'method'> = {}): Promise<TResponse> => {
-    return this.request<TResponse>(url, { ...options, method: METHODS.DELETE }, options.timeout);
-  };
+  get: HTTPMethod = (url, options = {}) => (
+    this.request(url, {...options, method: METHODS.GET}, options.timeout)
+  )
+  put: HTTPMethod = (url, options = {}) => (
+    this.request(url, {...options, method: METHODS.PUT}, options.timeout)
+  )
+  post: HTTPMethod = (url, options = {}) => (
+    this.request(url, {...options, method: METHODS.POST}, options.timeout)
+  )
+  delete: HTTPMethod = (url, options = {}) => (
+    this.request(url, {...options, method: METHODS.DELETE}, options.timeout)
+  )
 
   request = <TResponse>(url: string, options: RequestOptions = {}, timeout = 5000): Promise<TResponse> => {
     const {

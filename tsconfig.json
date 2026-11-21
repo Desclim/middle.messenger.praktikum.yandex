@@ -9,7 +9,9 @@
       "DOM.Iterable"
     ],
     "types": [
-      "vite/client"
+      "vite/client",
+      "mocha",
+      "node"
     ],
     "skipLibCheck": true,
     "moduleResolution": "bundler",
@@ -21,7 +23,6 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

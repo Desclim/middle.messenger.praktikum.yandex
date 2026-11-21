@@ -31,6 +31,9 @@
 - удаление пользователя из чата;
 - роутинг между страницами без перезагрузки;
 - защита приватных маршрутов для неавторизованных пользователей.
+- тесты для Router, Block, HTTP.
+- XSS защита с помощью sanitize функций.
+- Husky precommit
 
 
 ## Архитектура
@@ -48,6 +51,7 @@ src/
   styles/        // глобальные стили, переменные, миксины
   types/         // типы TypeScript
   utils/         // вспомогательные функции
+  test-utils/    // вспомогательные функции для тестов
 
 ## Установка
 
@@ -87,8 +91,14 @@ npm run build
 npm run start
 ```
 
+precommit:
+
+```bash
+npm run check
+```
+
 UI брался с готового шаблона яндекса :
 https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1
 
 netlify :
-https://69e2de84ab2f210008df5ffa--thriving-taffy-369ce1.netlify.app/messenger
+https://69f5eef605d6670008e66d70--thriving-taffy-369ce1.netlify.app/messenger

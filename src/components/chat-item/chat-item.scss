@@ -1,5 +1,3 @@
-
-
 .chat-item {
   text-decoration: none;
   display: flex;
@@ -33,7 +31,10 @@
   }
 
   &__content {
-    flex: 1;
+    flex: 1 1 0;
+    width: 0;
+    min-width: 0;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -58,6 +59,7 @@
   }
 
   &__time {
+    white-space: nowrap;
     font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -70,10 +72,11 @@
     height: 100%;
     display: flex;
     justify-content: space-between;
-
   }
 
   &__message {
+    min-width: 0;
+    max-width: 100%;
     font-family: Inter, sans-serif;
     font-style: normal;
     font-weight: 500;
@@ -84,11 +87,12 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    overflow-wrap: break-word;
   }
 
   &__counterContainer {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
   }
 }
 
@@ -97,6 +101,7 @@
   min-width: 20px;
   height: 20px;
   border-radius: 10px;
+  flex: 0 0 auto;
 
   &__content {
     display: flex;
@@ -104,6 +109,8 @@
     justify-content: center;
     height: 100%;
     width: 100%;
+    padding: 0 6px;
+    box-sizing: border-box;
     font-size: 11px;
     color: white;
   }

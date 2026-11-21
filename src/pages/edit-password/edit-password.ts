@@ -16,6 +16,7 @@ import type {objectType} from "../../types/objectType";
 import type {User} from "../../types/user";
 import {getAvatarUrl} from "../../utils/getAvatarUrl";
 import {connect} from "../../core/Component/connect";
+import {sanitizeUserContent} from "../../utils/sanitaizeFunctions";
 
 interface EditPasswordPageProps extends BlockOwnProps {
   display_name: string;
@@ -146,8 +147,8 @@ const mapUserToProps = (state: objectType) => {
   const user = (state.user as Partial<User> | undefined) ?? {};
 
   return {
-    avatar: getAvatarUrl(user.avatar) ?? '',
-    display_name: user.display_name ?? '',
+    avatar: getAvatarUrl(user.avatar),
+    display_name: sanitizeUserContent(user.display_name),
   };
 };
 
